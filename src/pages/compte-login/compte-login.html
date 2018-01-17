@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Connexion
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding class="connexion">
+    <div *ngIf="AffichageLogin">
+      <ion-grid>
+          <ion-row>
+            <ion-col width-100>
+              <ion-list>
+                <ion-item>
+                   <ion-input type="text" placeholder="Login" [(ngModel)]="compte.Identifiant"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="password" placeholder="MotDePass" [(ngModel)]="compte.MotDePass"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Numero de téléphone" [(ngModel)]="compte.TelephonePortable"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      <div padding>
+          <button ion-button color="primary" (click)="Login()" block>Connexion</button>
+      </div>
+    </div>
+    <div *ngIf="AffichageLogin == false">
+      <ion-grid>
+        <ion-row>
+          <ion-list>
+            <ion-label>
+              <strong>Nom : </strong> <span>{{compte.Nom}}</span>
+            </ion-label>
+            <ion-label>
+              <strong>Prenom : </strong> <span>{{compte.Prenom}}</span>
+            </ion-label>
+            <ion-label>
+              <strong>Mes médecins : </strong>
+              <button ion-grid class="Medecin" *ngFor="let compte of compte.MesMedecin" (click)="VoirMedecin(compte)">
+                  <div>{{ compte.Nom }} {{ compte.Prenom }}</div>
+              </button> 
+            </ion-label>
+            <ion-label>
+                <strong>Mon ordonnance : </strong>
+                <button ion-grid class="Medicament" *ngFor="let Medicament of compte.MesMedicaments" (click)="VoirMedicament(Medicament)">
+                  <div> {{ Medicament.DenominationMedicament }}</div>
+                </button> 
+            </ion-label>
+            <ion-label>
+                <strong>Mes Facteurs : </strong>
+                <button ion-grid class="Facteur" *ngFor="let Facteur of compte.MesFacteurs" (click)="VoirFacteur(Facteur)">
+                  <div> {{ Facteur.Nom }}</div>
+                </button> 
+            </ion-label>
+          </ion-list>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>

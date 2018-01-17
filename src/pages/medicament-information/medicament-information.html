@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title *ngIf="medicament != null">{{medicament.DenominationMedicament}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div *ngIf="medicament != null">
+      <ion-grid>
+        <ion-row>
+          <ion-list>
+            <ion-label>
+              <strong>Dénomination : </strong> {{medicament.DenominationMedicament}}
+            </ion-label>
+            <ion-label>
+              <strong>Forme : </strong> {{medicament.FormePharmaceutique}}
+            </ion-label>
+            <ion-label>
+              <strong>Voies d'administration : </strong> {{medicament.VoiesAdministration}}
+            </ion-label>
+          </ion-list>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <button ion-button color="primary" (click)="Fermer()" block>Retour</button>
+</ion-content>

@@ -1,0 +1,39 @@
+ion-range.glissiereJours, ion-range.glissiereHeure > ion-icon{
+    font-size: 3.0rem;
+    color: color($colors, light);
+    padding : 5px;
+}
+
+ion-item.glissieredateFin{
+    height: 80px;
+    // padding : 5px;
+    // margin: 5px;
+}
+// span {
+//     font-size: 1.1rem;
+//     color: color($colors, light);
+// }
+
+// button.boutonsuivant{
+//     display: flex;
+//     flex-wrap: noswrap;
+//     justify-content : space-between;
+//     padding: 5px;
+// }
+// span.suite {
+//     width: 100px;
+//     height: 20px;
+
+//     font-size: 2.0rem;
+//     color: color($colors, light);
+//     text-align: center;
+// }
+// ion-icon.fleche {
+//     width: 30px;
+//     height: 30px;
+    
+//     font-size: 3.0rem;
+//     color: color($colors, light);
+//     text-align: right;
+// }
+

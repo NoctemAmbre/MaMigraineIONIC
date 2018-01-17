@@ -1,0 +1,50 @@
+<!--
+  Generated template for the QuestionnaireMedicamentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Médicaments</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="nouvelleMigraine">
+    <ion-list>
+      <ion-item>
+        <div ion-grid class="question">
+          <p>Quel sont les médicament que vous avez pris ?</p>
+        </div>
+      </ion-item>
+      <ion-label></ion-label>
+
+    </ion-list>
+
+    <button ion-grid class="medicament" *ngFor="let medicament of compte.MesMedicaments">
+      <ion-row>
+        <ion-checkbox [(ngModel)]="medicament.Selection" class="checkmedoc" color="primary" checked="false"></ion-checkbox>
+        <div class="textmedoc">{{medicament.DenominationMedicament}}</div>
+      </ion-row>
+    </button>
+
+  </div>
+
+  <div class="troisboutons">
+    <button class="boutonprecedent" ion-button color="primary" (click)="Annule()" block>
+      <ion-icon class="flecheAvant" name="arrow-back" item-start></ion-icon>
+    </button>
+    <button class="boutonannule" ion-button color="primary" (click)="Fin()" block>
+      <span>La suite plus tard</span>
+    </button>
+
+    <button class="boutonsuivant" ion-button color="primary" (click)="Suivant()" block>
+      <ion-icon class="flecheApres" name="arrow-forward" item-start></ion-icon>
+    </button>
+
+  </div>
+</ion-content>

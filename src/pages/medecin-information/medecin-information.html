@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="medecin != null">{{medecin.Nom}} {{medecin.Prenom}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding classe="Medecin">
+ <div *ngIf="medecin != null">
+     <ion-grid>
+      <ion-row>
+
+          <ion-list>
+            <ion-label>
+              <strong>Nom : </strong> {{medecin.Nom}}
+            </ion-label>
+            <ion-label>
+              <strong>Prenom : </strong> {{medecin.Prenom}}
+            </ion-label>
+            <ion-label>
+              <strong>Adresse : </strong>
+              <div>
+                {{medecin.Adresse.Numero}} {{medecin.Adresse.NomRue}}
+              </div>
+              <div>
+                {{medecin.Adresse.CodePostal}} {{medecin.Adresse.Ville}}
+              </div>
+            </ion-label>
+            <ion-label>
+              <strong>Horaire d'ouverture : </strong>
+              <div *ngFor="let horaire of medecin.HoraireOuverture">
+                <div>{{horaire.Jour}} : de {{horaire.Matin}} à {{horaire.Soir}}</div>
+              </div>
+            </ion-label>
+          </ion-list>
+
+      </ion-row>
+    </ion-grid>
+    <button ion-button color="primary" (click)="Fermer()" block>Retour</button>
+  </div>
+</ion-content>

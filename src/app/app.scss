@@ -1,0 +1,239 @@
+.connexion{
+    background: color($colors, primary);
+    color:color($colors, light);
+    font-size: 0.3rem;
+}
+.nouvelle{
+    background: color($colors, primary);
+    color:color($colors, light);
+    font-size: 0.3rem;
+}
+// .historique{
+//     background: color($colors, secondary);
+//     color:color($colors, light);
+//     font-size: 0.3rem;
+// }
+.toolbar-title{
+    text-align:center;
+}
+.tabs-md .tab-button-ison{
+    color:color($colors, light);
+}
+strong{
+    font-size: 1.5rem;
+}
+// span{
+//     font-size: 1.2rem;
+// }
+.liste{
+    height: 20px;
+    //max-height: 20px
+}
+ion-label{
+    margin : 13px 8px 13px 0;
+}
+ion-item{
+    margin : 13px 8px 13px 0;
+}
+.btnlist{
+    margin : 10px 8px 10px 0;
+    //height: 13px;
+    //min-height : 13px
+}
+
+button.Medicament, button.Facteur, button.Medecin{
+    background-color: color($colors, secondary);
+    padding : 2px;
+    margin : 2px 0px 2px 10px;
+    width: 95%;
+    height: 12px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: color($colors, light);
+}
+button.Medecin :hover{
+    background-color: color($colors, primary);
+}
+button.Medicament :hover{
+    background-color: color($colors, primary);
+}
+button.Facteur :hover{
+    background-color: color($colors, primary);
+}
+
+div.troisboutons{
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    background-color: color($colors, secondary);
+    padding: 5px;
+}
+
+button.boutonprecedent{
+    width: 30px;
+    height: 30px;
+    
+    font-size: 4.0rem;
+    color: color($colors, light);
+    text-align: center;
+    padding: 0.1em;
+}
+button.boutonannule{
+    width: 160px;
+    height: 30px;
+
+    font-size: 2.0rem;
+    color: color($colors, light);
+    text-align: left; 
+}
+//button.boutonannule > span{
+    // width: 100px;
+    // height: 30px;
+
+    // font-size: 2.0rem;
+    // color: color($colors, light);
+    // text-align: center;
+//}
+button.boutonsuivant{
+    width: 30px;
+    height: 30px;
+    
+    font-size: 4.0rem;
+    color: color($colors, light);
+    text-align: center;
+    padding: 0.1em;
+}
+
+ion-icon.flecheAvant,  ion-icon.flecheApres{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    font-size: 3.0rem;
+    color: color($colors, light);
+    text-align: center;
+}
+ion-icon.stars1, ion-icon.stars2, ion-icon.stars3, ion-icon.stars4, ion-icon.stars5{
+    font-size: 5.0rem;
+    color: color($colors, stars);
+}
+
+ion-icon.stars1Select, ion-icon.stars2Select, ion-icon.stars3Select, ion-icon.stars4Select, ion-icon.stars5Select{
+    font-size: 5.0rem;
+    color: color($colors, starsSelect);
+}
+
+ion-icon.ministars1, ion-icon.ministars2, ion-icon.ministars3, ion-icon.ministars4, ion-icon.ministars5{
+    font-size: 2.8rem;
+    color: color($colors, stars);
+    background-color: color($colors, secondary);
+}
+
+ion-icon.ministars1Select, ion-icon.ministars2Select, ion-icon.ministars3Select, ion-icon.ministars4Select, ion-icon.ministars5Select{
+    font-size: 2.8rem;
+    color: color($colors, starsSelect);
+    background-color: color($colors, secondary);
+}
+
+.blockEtoiles{
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    text-align: center;
+}
+button.boutonetoile{
+    padding : 0px;
+}
+
+div.infoMigraine {
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : center;
+}
+
+// div.infoMigraine p{
+//     width: 100%;
+//     height: 280px;
+//     border-radius : 30px;
+//     padding : 30px;
+//     //box-shadow: 20px;
+    
+//     background-color: color($colors, light);
+//     text-align: center;
+// }
+
+button.medicament, button.facteur{
+    //width: 300px;
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    align-items: center;
+    background-color: color($colors, secondary);
+    // border: 2px;
+    // border-color :   color($colors, danger);
+    border-radius: 5px;
+    
+    margin : 0px 3px 3px 0px;
+}
+
+div.textmedoc{    
+    width: 240px;
+    height: 30px;
+
+    font-size: 1.1rem;
+    //white-space:nowrap;
+    text-align: left;
+    background-color: color($colors, secondary);
+    color : color($colors, light);
+}
+div.textfacteur{
+    width: 160px;
+    height: 30px;
+    font-size: 1.1rem;
+    text-align: left;
+    background-color: color($colors, secondary);
+    color : color($colors, light);
+}
+
+div.permutteur{
+    width: 120px;
+    height: 30px;
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    align-items: center;
+    color : color($colors, light);
+}
+div.affichagenon, div.affichageoui{
+    width: 40px;
+    height: 30px;
+    // font-size: 1.1rem;
+    text-align: center;
+    background-color: color($colors, secondary);
+    padding-top : 8px;
+    // color : color($colors, light);
+}
+
+ion-checkbox.checkmedoc{
+    width: 40px;
+    height: 30px;
+    padding: 5px 0px 0px 9px;
+    margin-right: 5px;
+    background-color: color($colors, primary);
+    color : color($colors, light);
+}
+
+ion-toggle.checkfacteur{
+    width: 50px;
+    height: 30px;
+    padding: 0px 0px 0px 0px;
+    font-size: 0.5rem;
+    //margin-right: 5px;
+    background-color: color($colors, secondary);
+    color : color($colors, light);
+}
+
+// .blockEtoiles button :hover{
+//     font-size: 5.0rem;
+//     color: color($colors, danger);
+// }
+

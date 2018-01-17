@@ -1,0 +1,8 @@
+{
+  "name": "MigraineIONIC3Tel",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

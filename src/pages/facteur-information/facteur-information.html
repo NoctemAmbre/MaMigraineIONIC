@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="facteur != null">{{facteur.Nom}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <div *ngIf="facteur != null">
+        <ion-grid>
+          <ion-row>
+            <ion-list>
+              <ion-label>
+                <strong>Nom : </strong> {{facteur.Nom}}
+              </ion-label>
+              <ion-label>
+                <strong>Question : </strong> {{facteur.Question}}
+              </ion-label>
+              <ion-label>
+                <strong>Type De Facteur : </strong> {{facteur.TypeDeFacteur.Type}}
+              </ion-label>
+              <ion-label>
+                <strong>Type De Reponse : </strong> {{facteur.TypeDeReponse.Type}}
+              </ion-label>
+              <ion-label>
+                  <strong>Information : </strong> {{facteur.TypeDeReponse.Information}}
+                </ion-label>
+            </ion-list>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <button ion-button color="primary" (click)="Fermer()" block>Retour</button>
+  </ion-content>
+  

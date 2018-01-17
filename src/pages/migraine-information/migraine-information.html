@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="migraine != null">{{migraine.Debut}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <div *ngIf="migraine != null">
+          <ion-grid>
+           <ion-row>
+            <ion-list>
+                <ion-label>
+                    <strong>Debut : </strong>   {{migraine.Debut}}
+                </ion-label>
+                <ion-label>
+                    <strong>Fin :</strong>      {{migraine.Fin}}
+                </ion-label>
+                <ion-label>
+                    <strong>Intensité :</strong>{{migraine.Intensite}}
+                </ion-label>
+                <ion-label>
+                    <strong>Durée :</strong>      {{migraine.Duree}}
+                </ion-label>
+                <ion-label>
+                    <strong>Médicament pris : </strong>
+                    <button ion-grid class="Medicament" *ngFor="let Medicament of migraine.MedicamentsPris" (click)="VoirMedicament(Medicament)">
+                        <div>{{ Medicament.DenominationMedicament }}</div>
+                    </button> 
+                </ion-label>
+                <ion-label>   
+                    <strong>Facteurs : </strong>  
+                    <button ion-grid class="Facteur" *ngFor="let Facteur of migraine.Facteurs" (click)="VoirFacteur(Facteur)">
+                        <div> {{ Facteur.Nom }}</div>
+                    </button>
+                </ion-label>
+            </ion-list>
+           </ion-row>
+          </ion-grid>
+      </div>
+      <button ion-button color="primary" (click)="Fermer()" block>Retour</button>
+  </ion-content>
+  
