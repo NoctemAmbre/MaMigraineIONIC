@@ -41,6 +41,25 @@ ion-item{
     //min-height : 13px
 }
 
+div.blocquestion{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    //flex-wrap: noswrap;
+    justify-content : space-between;
+    text-align: center;
+}
+
+div.question{
+    background-color: color($colors, secondary);
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    border-radius: 5px;
+    border-color: color($colors, light);
+}
+
 button.Medicament, button.Facteur, button.Medecin{
     background-color: color($colors, secondary);
     padding : 2px;
@@ -82,7 +101,7 @@ button.boutonannule{
     width: 160px;
     height: 30px;
 
-    font-size: 2.0rem;
+    font-size: 1.5rem;
     color: color($colors, light);
     text-align: left; 
 }
@@ -98,7 +117,7 @@ button.boutonsuivant{
     width: 30px;
     height: 30px;
     
-    font-size: 4.0rem;
+    font-size: 3.0rem;
     color: color($colors, light);
     text-align: center;
     padding: 0.1em;
@@ -145,6 +164,8 @@ button.boutonetoile{
 }
 
 div.infoMigraine {
+    width: 100%;
+    // height: 300px;
     display: flex;
     flex-wrap: noswrap;
     justify-content : center;
@@ -179,7 +200,7 @@ div.textmedoc{
     width: 240px;
     height: 30px;
 
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     //white-space:nowrap;
     text-align: left;
     background-color: color($colors, secondary);
@@ -188,7 +209,7 @@ div.textmedoc{
 div.textfacteur{
     width: 160px;
     height: 30px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-align: left;
     background-color: color($colors, secondary);
     color : color($colors, light);
@@ -204,7 +225,7 @@ div.permutteur{
     color : color($colors, light);
 }
 div.affichagenon, div.affichageoui{
-    width: 40px;
+    width: 45px;
     height: 30px;
     // font-size: 1.1rem;
     text-align: center;
@@ -216,15 +237,19 @@ div.affichagenon, div.affichageoui{
 ion-checkbox.checkmedoc{
     width: 40px;
     height: 30px;
-    padding: 5px 0px 0px 9px;
+    //padding: 0px 0px 0px 0px;
+    padding-top: 7px;
     margin-right: 5px;
-    background-color: color($colors, primary);
+    background-color: color($colors, secondary);
     color : color($colors, light);
+    display: flex;
+    justify-content : center;
+    text-align: center;
 }
 
 ion-toggle.checkfacteur{
-    width: 50px;
-    height: 30px;
+    width: 40px;
+    height: 20px;
     padding: 0px 0px 0px 0px;
     font-size: 0.5rem;
     //margin-right: 5px;

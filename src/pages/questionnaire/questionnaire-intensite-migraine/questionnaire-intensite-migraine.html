@@ -14,53 +14,52 @@
 
 
 <ion-content padding>
-  <div *ngIf="nouvelleMigraine">
-    <ion-list>
-      <ion-item>
-        <div ion-grid class="question">
-          <p>Quel était l'intensité de votre migraine ?</p>
-        </div>
-      </ion-item>
-      <!-- <ion-label></ion-label> -->
+  <div *ngIf="nouvelleMigraine" class="blocquestion">
+    <ion-list class="choix">
+      <div class="question">
+        <p>Quel était l'intensité de votre migraine ?</p>
+      </div>
+      <ion-label></ion-label>
+
+      <div class="blockEtoiles" *ngIf="EtoileSelection == false">
+        <button ion-button color="primary" (click)="ValidIntensite(1)" (mouseenter)="Intensite(1)" block>
+          <ion-icon button class="stars1" range-right name={{Etoile1}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(2)" (mouseenter)="Intensite(2)" block>
+          <ion-icon button class="stars2" range-right name={{Etoile2}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(3)" (mouseenter)="Intensite(3)" block>
+          <ion-icon button class="stars3" range-right name={{Etoile3}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(4)" (mouseenter)="Intensite(4)" block>
+          <ion-icon button class="stars4" range-right name={{Etoile4}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(5)" (mouseenter)="Intensite(5)" block>
+          <ion-icon button class="stars5" range-right name={{Etoile5}}></ion-icon>
+        </button>
+      </div>
+      <div class="blockEtoiles" *ngIf=EtoileSelection>
+        <button ion-button color="primary" (click)="ValidIntensite(1)" block>
+          <ion-icon button class="stars1Select" range-right name={{Etoile1}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(2)" block>
+          <ion-icon button class="stars2Select" range-right name={{Etoile2}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(3)" block>
+          <ion-icon button class="stars3Select" range-right name={{Etoile3}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidIntensite(4)" block>
+          <ion-icon button class="stars4Select" range-right name={{Etoile4}}></ion-icon>
+        </button>
+        <button ion-button color="primary" (click)="ValidInteniste(5)" block>
+          <ion-icon button class="stars5Select" range-right name={{Etoile5}}></ion-icon>
+        </button>
+      </div>
+      <ion-label></ion-label>
+      <div class="infoMigraine">
+        <p>{{InfoMigraine}}</p>
+      </div>
     </ion-list>
-    <div class="blockEtoiles" *ngIf="EtoileSelection == false">
-      <button ion-button color="primary" (click)="ValidIntensite(1)" (mouseenter)="Intensite(1)" block>
-        <ion-icon button class="stars1" range-right name={{Etoile1}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(2)" (mouseenter)="Intensite(2)" block>
-        <ion-icon button class="stars2" range-right name={{Etoile2}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(3)" (mouseenter)="Intensite(3)" block>
-        <ion-icon button class="stars3" range-right name={{Etoile3}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(4)" (mouseenter)="Intensite(4)" block>
-        <ion-icon button class="stars4" range-right name={{Etoile4}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(5)" (mouseenter)="Intensite(5)" block>
-        <ion-icon button class="stars5" range-right name={{Etoile5}}></ion-icon>
-      </button>
-    </div>
-    <div class="blockEtoiles" *ngIf=EtoileSelection>
-      <button ion-button color="primary" (click)="ValidIntensite(1)" block>
-        <ion-icon button class="stars1Select" range-right name={{Etoile1}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(2)" block>
-        <ion-icon button class="stars2Select" range-right name={{Etoile2}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(3)" block>
-        <ion-icon button class="stars3Select" range-right name={{Etoile3}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidIntensite(4)" block>
-        <ion-icon button class="stars4Select" range-right name={{Etoile4}}></ion-icon>
-      </button>
-      <button ion-button color="primary" (click)="ValidInteniste(5)" block>
-        <ion-icon button class="stars5Select" range-right name={{Etoile5}}></ion-icon>
-      </button>
-    </div>
-    <ion-label></ion-label>
-    <div class="infoMigraine">
-      <p>{{InfoMigraine}}</p>
-    </div>
     <div class="troisboutons">
       <button class="boutonprecedent" ion-button color="primary" (click)="Annule()" block>
         <ion-icon class="flecheAvant" name="arrow-back" item-start></ion-icon>
@@ -68,7 +67,7 @@
       <button class="boutonannule" ion-button color="primary" (click)="Fin()" block>
         <span>La suite plus tard</span>
       </button>
-      
+
       <button class="boutonsuivant" *ngIf="EtoileSelection" ion-button color="primary" (click)="Suivant()" block>
         <ion-icon class="flecheApres" name="arrow-forward" item-start></ion-icon>
       </button>
