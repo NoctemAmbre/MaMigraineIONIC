@@ -1,25 +1,31 @@
-.historique{
+button.historique{
     display: flex;
     flex-wrap: wrap;
-    justify-content : flex-start;
-
+    justify-content : space-between;
     background-color: color($colors, secondary);
-    border: 1px solid color($colors, light);;
+    border: 1px solid color($colors, light);
     border-radius: 5px;
     width: 97%;
     height: 50px;
     margin : 2px 5px 2px 5px;
     color: color($colors, light);
 }
+
 .historique :hover{
     background-color: color($colors, primary);
 }
 div.DateDebut, div.DateFin, div.Duree, div.Intensite{
-    width: 148px;
-    height: 16px;
+    width: 152px;
+    height: 20px;
     padding: 3px;
+    padding-top: 5px;
     text-align: left;
     font-size: 1.1rem;
+    background-color: color($colors, secondary);
+    color: color($colors, light);
+}
+div.Intensite {
+    background-color: color($colors, secondary);
 }
 div.Intensite > ion-icon{
     font-size: 1.1rem;

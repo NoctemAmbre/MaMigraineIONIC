@@ -83,20 +83,23 @@ export class CompteLoginPage {
          {
           console.log('le retour du compte', retour);
           if ((retour as Compte).Erreur == null){
+            console.log('retour du compte : ', retour)
             this.compte = retour as Compte;
             localStorage.setItem('Token', this.compte.Token);
             localStorage.setItem('Compte', JSON.stringify(this.compte));
             this.compteServiceProvider.changeCompte(this.compte);
+            this.compteServiceProvider.AffichageMigraineIncomplete();
             this.AffichageLogin = false;
             console.log(retour)
           }
           else {
+            console.log('retour du compte avec erreur: ', retour)
             localStorage.removeItem('Token');
             localStorage.removeItem('Compte');
             this.AffichageLogin = true;
           }
          },
-         error => console.log(error));
+         error => console.log('retour du compte grosse erreur',error));
 
     
     //this.viewCtrl.dismiss();
@@ -114,10 +117,19 @@ export class CompteLoginPage {
         localStorage.setItem('Token', this.compte.Token);
         localStorage.setItem('Compte', JSON.stringify(this.compte));
         this.compteServiceProvider.changeCompte(this.compte);
+        this.compteServiceProvider.AffichageMigraineIncomplete();
         this.AffichageLogin = false;
         console.log(retour)
       },
       error => console.log(error));
+  }
+
+  Deconnexion(){
+    localStorage.removeItem('Token');
+    localStorage.removeItem('Compte');
+    this.compteServiceProvider.changeCompte(new Compte());
+    this.compteServiceProvider.AffichageMigraineIncomplete();
+    this.AffichageLogin = true;
   }
 
   VoirMedecin(medecin : Compte) {

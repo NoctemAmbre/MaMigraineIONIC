@@ -5,6 +5,12 @@ import { MigraineHistoriquePage } from '../migraine-historique/migraine-historiq
 import { MigraineNouvellePage } from '../migraine-nouvelle/migraine-nouvelle';
 import { CompteLoginPage } from '../compte-login/compte-login';
 
+import { CompteServiceProvider} from '../../providers/compte/compte-service';
+
+import { Compte } from '../../model/compte';
+import { Migraine } from '../../model/migraine';
+
+
 /**
  * Generated class for the MenuPage tabs.
  *
@@ -19,11 +25,17 @@ import { CompteLoginPage } from '../compte-login/compte-login';
 })
 export class MenuPage {
 
+  incomplet : number;
+
   nouvelleMigraineRoot = MigraineNouvellePage;
   historiqueRoot = MigraineHistoriquePage;
   connexionRoot = CompteLoginPage;
 
 
-  constructor(public navCtrl: NavController) {}
+  constructor(
+    public navCtrl: NavController,
+    public compteServiceProvider : CompteServiceProvider) {
+      this.compteServiceProvider.incomplet.subscribe(res => this.incomplet = res);
+    }
 
 }

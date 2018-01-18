@@ -18,9 +18,12 @@ export class CompteServiceProvider {
   private WebService = 'http://localhost:57928/Service1.svc';
 
   public static CleBasic : string = "j6tYtmgst2XIOIeRsPHR";
-  private comptes = new BehaviorSubject<Compte>(new Compte());
   
+  private comptes = new BehaviorSubject<Compte>(new Compte());
   compte = this.comptes.asObservable();
+
+  private incomplets = new BehaviorSubject<number>(null);
+  incomplet = this.incomplets.asObservable();
 
   constructor(public http: HttpClient) {
     //console.log('Hello RestProvider Provider');
@@ -29,6 +32,10 @@ export class CompteServiceProvider {
   changeCompte(compte){
     //localStorage.setItem('Token', compte.Token);
     this.comptes.next(compte);
+  }
+
+  changeIncomplet(incomplet){
+    this.incomplets.next(incomplet);
   }
 
   // public TokenPresent() : boolean
@@ -71,7 +78,7 @@ export class CompteServiceProvider {
     var body = JSON.stringify({IDWeb : this.comptes.value.IDWeb, Identifiant : this.comptes.value.Identifiant, MesMigraines : this.comptes.value.MesMigraines, Token : localStorage.getItem('Token') });
     
     console.log('Ajout Migraine', this.compte);
-    return this.http.post<Compte>(this.WebService + "/Tel/Patient/AjoutMigraineInconplet?Value="+ btoa(body), '', {headers : headers, observe : 'response'}).pipe(map(this.extractData));
+    return this.http.post<Compte>(this.WebService + "/Tel/Patient/AjoutMigraineIncomplet?Value="+ btoa(body), '', {headers : headers, observe : 'response'}).pipe(map(this.extractData));
   }
   
     // return this.http.post(this.WebService + '/Tel/login').pipe(
@@ -88,11 +95,25 @@ export class CompteServiceProvider {
   // }
   
    private extractData(res: HttpResponse<Compte>) {
+    console.log('le body a la reception', res.body);
     let body = res.body;
     return body || { };
   }
-  
-  // private handleError (error: Response | any) {
+
+  public AffichageMigraineIncomplete() : void{
+    let nombre : number = 0;
+    console.log('avant changement : ', nombre);
+    if (this.comptes.value.MesMigraines == null) this.changeIncomplet(null);
+    else{
+      this.comptes.value.MesMigraines.forEach(elt => {if (elt.Complet == false) nombre++;});
+      if (nombre > 0)this.changeIncomplet(nombre);
+      else this.changeIncomplet(null);
+      console.log('avant changement  : ', nombre);
+    }
+  }
+
+
+          // private handleError (error: Response | any) {
   //   let errMsg: string;
   //   if (error instanceof Response) {
   //     const err = error || '';

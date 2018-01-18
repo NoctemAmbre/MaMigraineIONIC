@@ -18,4 +18,5 @@ export class Migraine {
     Intensite   : number;
     MedicamentsPris : Medicament[];
     Facteurs    : Facteur[];
+    Complet     : Boolean;
 }

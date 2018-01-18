@@ -121,10 +121,37 @@ export class QuestionnaireFacteurPage {
     this.viewController.dismiss();
   }
 
-  private Fin()
-  {
-    //effectuer l'envois partiel de la migraine avant de revenir a la page de garde
-    let AffichageHome = this.modalController.create( MenuPage );
-    AffichageHome.present();
+  private Fin(){
+    this.compte.MesMigraines = [];
+    this.compte.MesMigraines.push(this.nouvelleMigraine);
+    this.compteServiceProvider.changeCompte(this.compte);
+    this.compteServiceProvider.AjouterMigraineIncomplet()
+      .subscribe(
+        (retour) => 
+        {
+         console.log('le retour du compte', retour);
+         if ((retour as Compte).Erreur == null){
+           this.compte = retour as Compte;
+           localStorage.setItem('Token', this.compte.Token);
+           localStorage.setItem('Compte', JSON.stringify(this.compte));
+           this.compteServiceProvider.changeCompte(this.compte);
+           console.log(retour)
+           let AffichageHome = this.modalController.create( MenuPage );
+           AffichageHome.present();
+         }
+         else {
+           localStorage.removeItem('Token');
+           localStorage.removeItem('Compte');
+           console.log("quelquechose s'est mal passé");
+         }
+        },
+        error => console.log(error));
   }
+
+  // private Fin()
+  // {
+  //   //effectuer l'envois partiel de la migraine avant de revenir a la page de garde
+  //   let AffichageHome = this.modalController.create( MenuPage );
+  //   AffichageHome.present();
+  // }
 }
