@@ -39,6 +39,17 @@ export class QuestionnaireMedicamentPage {
     console.log('ionViewDidLoad QuestionnaireMedicamentPage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
+    if (this.nouvelleMigraine.MedicamentsPris != null)   {
+      this.nouvelleMigraine.MedicamentsPris.forEach(medicament =>       {
+        this.compte.MesMedicaments.forEach(medocOrdonance =>   {
+            if (medicament.DenominationMedicament == medocOrdonance.DenominationMedicament) {
+              medocOrdonance.Selection = true;
+            }
+        });
+      });
+    }
+    
+  
     console.log(this.compte);
   }
 

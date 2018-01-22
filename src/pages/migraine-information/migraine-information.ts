@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+
+import { CompteServiceProvider} from '../../providers/compte/compte-service';
+import { QuestionnaireDebutMigrainePage } from '../questionnaire/questionnaire-debut-migraine/questionnaire-debut-migraine';
+
 import { Migraine } from '../../model/migraine';
+import { Compte } from '../../model/compte';
 import { Medicament } from '../../model/medicament';
 import { Facteur } from '../../model/facteur';
+
 
 @IonicPage()
 @Component({
@@ -14,10 +20,12 @@ export class MigraineInformationPage {
 
   migraine : Migraine;
   constructor(
+    public compteServiceProvider : CompteServiceProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewController: ViewController,
-    public alertController: AlertController) {
+    public alertController: AlertController,
+    public ModalController : ModalController) {
   }
 
   ionViewDidLoad() {
@@ -83,9 +91,18 @@ export class MigraineInformationPage {
   alert.present();
 }
 
-  Fermer()
-  {
+  Fermer(){
     this.viewController.dismiss();
   }
+  Modifier(){
+    let compte : Compte;
+     this.compteServiceProvider.compte.subscribe(res => compte = res);
+     compte.MesMigraines = [];
+     compte.MesMigraines.push(this.migraine);
+     let modifMigraine = this.ModalController.create(QuestionnaireDebutMigrainePage, {Migraine : this.migraine});
+     modifMigraine.present();
+  }
+  supprimer(){
 
+  }
 }

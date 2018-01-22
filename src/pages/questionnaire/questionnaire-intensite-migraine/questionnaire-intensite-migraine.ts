@@ -45,6 +45,9 @@ export class QuestionnaireIntensiteMigrainePage {
     console.log('ionViewDidLoad QuestionnaireIntensiteMigrainePage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
+    if (this.nouvelleMigraine.Intensite > 0){
+      this.Intensite(this.nouvelleMigraine.Intensite);
+    }
   }
 
   Intensite(valeur : number){

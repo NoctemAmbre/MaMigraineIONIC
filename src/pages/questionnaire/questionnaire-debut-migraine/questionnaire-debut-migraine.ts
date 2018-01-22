@@ -23,7 +23,7 @@ export class QuestionnaireDebutMigrainePage {
 
   compte : Compte;
   
-
+  NouvelleMigraine : Migraine;
   DateDebut : string;
   JourDebut : string;
   HeureMax : number = new Date().getHours();
@@ -47,11 +47,31 @@ export class QuestionnaireDebutMigrainePage {
 
   ionViewDidLoad() {
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
-    this.HeureMax = new Date().getHours();
-    this.DateDebut = this.DateActuel();
-    this.JourDebut = this.JoursActuel();
-    console.log(this.DateDebut);
-    console.log(this.JourDebut);
+    
+    this.NouvelleMigraine = this.navParams.get('Migraine') as Migraine;
+    if (this.NouvelleMigraine == null) {
+      this.NouvelleMigraine = new Migraine();
+      // this.HeureMax = new Date().getHours();
+      // this.JourMax = new Date().getDay();
+      this.DateDebut = this.DateActuel();
+      this.JourDebut = this.JoursActuel();
+      
+      console.log(this.DateDebut);
+      console.log(this.JourDebut);
+    }
+    else {
+      console.log('migraine a modifier', this.NouvelleMigraine);
+      this.HeureMax = 24;
+      this.NouvelleMigraine.Debut = this.Nettoyage(this.NouvelleMigraine.Debut);
+      this.DateDebut = this.NouvelleMigraine.Debut.substring(0, this.NouvelleMigraine.Debut.search('T'));
+      this.JourDebut = this.NouvelleMigraine.Debut.substring(this.NouvelleMigraine.Debut.search('T') + 1, this.NouvelleMigraine.Debut.length);
+
+      this.JourModifie = this.NouvelleMigraine.DateDebut.day;
+      this.HeureModifie = this.NouvelleMigraine.HeureDebut.hour;
+
+      console.log(this.DateDebut);
+      console.log(this.JourDebut);
+    }
   }
 
   //retourReglette()
@@ -74,6 +94,27 @@ export class QuestionnaireDebutMigrainePage {
     else jour = (date.getDate()).toString();
 
     return annee + "-" + moi + "-" + jour;
+  }
+
+  private Nettoyage(date : string) : string{
+    if (date.split('T').length == 2){
+      let calendrier : string  = date.split('T')[0];
+      let anne : string = calendrier.split('-')[0];
+      let moi : string = this.ajoutDuZero(calendrier.split('-')[1]);
+      let jour : string = this.ajoutDuZero(calendrier.split('-')[2]);
+
+      let pendule : string  = date.split('T')[1];
+      let heure : string = this.ajoutDuZero(pendule.split(':')[0]);
+      let minute : string = this.ajoutDuZero(pendule.split(':')[1]);
+
+      return anne + '-' + moi + '-' + jour + 'T' + heure + ':' + minute;
+    }
+  }
+
+  private ajoutDuZero(valeur : string){
+    console.log('avant modification', valeur);
+    if (valeur.length == 1) return "0" + valeur;
+    else return valeur;
   }
 
   private JoursActuel() : string
@@ -131,10 +172,10 @@ export class QuestionnaireDebutMigrainePage {
   //passage a la page suivant. pour l'occasion on efface la liste des migraines pour en faire une nouvelle contenant la novuelle migraine.
   //on en profite pour transformer la date pour qu'elle soit conforme a la structure d'envois 
   private Suivant(){
-    let nouvelleMigraine : Migraine = new Migraine();
-    nouvelleMigraine.Debut = this.DateDebut + 'T' + this.JourDebut;
+    
+    this.NouvelleMigraine.Debut = this.DateDebut + 'T' + this.JourDebut;
     this.compte.MesMigraines = [];
-    this.compte.MesMigraines.push(nouvelleMigraine);
+    this.compte.MesMigraines.push(this.NouvelleMigraine);
     this.compteServiceProvider.changeCompte(this.compte);
     let AffichageFinMigraine = this.modalController.create(QuestionnaireFinMigrainePage);
     AffichageFinMigraine.present();

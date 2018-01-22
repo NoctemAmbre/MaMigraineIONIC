@@ -7,19 +7,39 @@
 </ion-header>
 
 <ion-content>
-  <button ion-grid class="historique" *ngFor="let Migraine of MesMigraines" (click)="VoirMigraine(Migraine)">
-
-    <!-- <div *ngIf="Migraine.Complet"> -->
-    <!-- <ion-col col-auto> -->
+  <div class="contenaire" *ngFor="let Migraine of MesMigraines">
+      <button class="historiqueComplet" *ngIf="Migraine.Complet"   (click)="VoirMigraine(Migraine)" style="border-color: white">
+          <div class="DateDebut">Du {{Migraine.DateDebut.day}}/{{Migraine.DateDebut.month}}/{{Migraine.DateDebut.year}} à {{Migraine.HeureDebut.hour}} : {{Migraine.HeureDebut.minute}}</div>
+          <div class="DateFin">Au {{Migraine.DateFin.day}}/{{Migraine.DateFin.month}}/{{Migraine.DateFin.year}} à {{Migraine.HeureFin.hour}} : {{Migraine.HeureFin.minute}}</div>
+          <div class="Duree">Durée : {{Migraine.Duree}} heure</div>
+          <div class="Intensite">Intensité :
+            <ion-icon *ngIf="Migraine.Intensite > 0" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 1" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 2" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 3" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 4" name="ios-star" item-start></ion-icon>
+          </div>
+      </button>
+      <button ion-grid class="historiqueIncomplet" *ngIf="Migraine.Complet == false"  (click)="VoirMigraine(Migraine)" style="border-color: red">
+          <div class="DateDebut">Du {{Migraine.DateDebut.day}}/{{Migraine.DateDebut.month}}/{{Migraine.DateDebut.year}} à {{Migraine.HeureDebut.hour}} : {{Migraine.HeureDebut.minute}}</div>
+          <div class="DateFin">Au {{Migraine.DateFin.day}}/{{Migraine.DateFin.month}}/{{Migraine.DateFin.year}} à {{Migraine.HeureFin.hour}} : {{Migraine.HeureFin.minute}}</div>
+          <div class="Duree">Durée : {{Migraine.Duree}} heure</div>
+          <div class="Intensite">Intensité :
+            <ion-icon *ngIf="Migraine.Intensite > 0" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 1" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 2" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 3" name="ios-star" item-start></ion-icon>
+            <ion-icon *ngIf="Migraine.Intensite > 4" name="ios-star" item-start></ion-icon>
+          </div>
+      </button>
+  </div>
+  
+  <!-- <button ion-grid class="historique" *ngFor="let Migraine of MesMigraines" (click)="VoirMigraine(Migraine)" style="border-color: red">
+    <div *ngIf="Migraine.Complet">
+    </div>
     <div class="DateDebut">Du {{Migraine.DateDebut.day}}/{{Migraine.DateDebut.month}}/{{Migraine.DateDebut.year}} à {{Migraine.HeureDebut.hour}} : {{Migraine.HeureDebut.minute}}</div>
-    <!-- </ion-col>
-      <ion-col col-auto> -->
     <div class="DateFin">Au {{Migraine.DateFin.day}}/{{Migraine.DateFin.month}}/{{Migraine.DateFin.year}} à {{Migraine.HeureFin.hour}} : {{Migraine.HeureFin.minute}}</div>
-    <!-- </ion-col>
-      <ion-col col-auto> -->
     <div class="Duree">Durée : {{Migraine.Duree}} heure</div>
-    <!-- </ion-col>
-      <ion-col col-auto> -->
     <div class="Intensite">Intensité :
       <ion-icon *ngIf="Migraine.Intensite > 0" name="ios-star" item-start></ion-icon>
       <ion-icon *ngIf="Migraine.Intensite > 1" name="ios-star" item-start></ion-icon>
@@ -27,6 +47,5 @@
       <ion-icon *ngIf="Migraine.Intensite > 3" name="ios-star" item-start></ion-icon>
       <ion-icon *ngIf="Migraine.Intensite > 4" name="ios-star" item-start></ion-icon>
     </div>
-    <!-- </ion-col> -->
-  </button>
+  </button> -->
 </ion-content>

@@ -45,9 +45,34 @@ export class QuestionnaireFacteurPage {
     console.log('ionViewDidLoad QuestionnaireFacteurPage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
-    this.nouvelleMigraine.Facteurs = [];
-    this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
-    
+
+    console.log('facteurs ',this.nouvelleMigraine.Facteurs);
+    if (this.nouvelleMigraine.Facteurs.length > 0){
+      this.nouvelleMigraine.Facteurs.forEach(facteur => {
+        this.compte.MesFacteurs.forEach(mesfacteurs => {
+          if (facteur.ID = mesfacteurs.ID){
+            console.log('type de réponse');
+            if (facteur.TypeDeReponse.ID == 2){
+              mesfacteurs.Selection = true;
+              console.log('la sélection est : ',mesfacteurs.Selection);
+              
+            }
+            if (facteur.TypeDeReponse.ID == 1){
+              mesfacteurs.Reponse = facteur.Reponse;
+              this.IntensiteFacteur(facteur.Reponse);
+              console.log('la valeur d\'intensité est : ',mesfacteurs.Reponse);
+            }
+          } 
+        });
+      });
+    }
+    else{
+      console.log('liste facteur vide');
+      this.nouvelleMigraine.Facteurs = [];
+      this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
+      
+    }
+  
     
     //console.log('nouvelle migraine',this.nouvelleMigraine);
   }

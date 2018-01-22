@@ -1,9 +1,16 @@
-button.historique{
+div.contenaire{
+    background-color: color($colors, secondary);
+}
+
+
+button.historiqueComplet, button.historiqueIncomplet {
     display: flex;
     flex-wrap: wrap;
     justify-content : space-between;
     background-color: color($colors, secondary);
-    border: 1px solid color($colors, light);
+    border: 1px solid;
+    // color($colors, light);
+    
     border-radius: 5px;
     width: 97%;
     height: 50px;
@@ -11,11 +18,11 @@ button.historique{
     color: color($colors, light);
 }
 
-.historique :hover{
+button.historiqueComplet :hover, button.historiqueIncomplet :hover{
     background-color: color($colors, primary);
 }
 div.DateDebut, div.DateFin, div.Duree, div.Intensite{
-    width: 152px;
+    width: 145px;
     height: 20px;
     padding: 3px;
     padding-top: 5px;
