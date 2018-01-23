@@ -45,7 +45,10 @@ export class QuestionnaireIntensiteMigrainePage {
     console.log('ionViewDidLoad QuestionnaireIntensiteMigrainePage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
+    
     if (this.nouvelleMigraine.Intensite > 0){
+      console.log('l\'intenisté de la migraine est de : ',this.nouvelleMigraine.Intensite);
+      this.EtoileSelection = true;
       this.Intensite(this.nouvelleMigraine.Intensite);
     }
   }
@@ -65,12 +68,16 @@ export class QuestionnaireIntensiteMigrainePage {
   }
 
   ValidIntensite(valeur : number){
-    if (this.EtoileSelection) this.Intensite(valeur);
     //this.EtoileSelection == false ? true : false;
-    if (this.EtoileSelection) this.EtoileSelection = false;
+    if (this.EtoileSelection){
+      this.Intensite(valeur);
+      this.nouvelleMigraine.Intensite = valeur;
+      this.EtoileSelection = false;
+      console.log('enregistement intensité : ', this.nouvelleMigraine.Intensite);
+    } 
     else this.EtoileSelection = true;
     console.log(this.EtoileSelection);
-    this.nouvelleMigraine.Intensite = valeur;
+    
   }
 
   private Suivant(){

@@ -24,10 +24,10 @@
         <ion-label>Date de Fin</ion-label>
         <ion-datetime displayFormat="DDDD DD MMMM YYYY" [(ngModel)]="DateFin"></ion-datetime>
       </ion-item>
-      <div *ngIf="JourMax - JourMin > 1">
+      <div *ngIf="JourMax - JourMin > 0">
         <ion-item class=glissieredateFin>
           <ion-range class="glissiereJours" min={{JourMin}} max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie"
-            (mouseenter)="jourModifie()" color="danger">
+            (ionChange)="jourModifie()" color="danger">
             <ion-icon range-left small name="calendar"></ion-icon>
             <ion-icon range-right name="calendar"></ion-icon>
           </ion-range>
@@ -41,7 +41,7 @@
       <div *ngIf="HeureMax - HeureMin > 0">
         <ion-item class=glissiereHeureFin>
           <ion-range class="glissiereHeure" min={{HeureMin}} max={{HeureMax}} step="1" snaps="true" pin="true" [(ngModel)]="HeureModifie"
-            (mouseenter)="heureModifie()" color="danger">
+            (ionChange)="heureModifie()" color="danger">
             <ion-icon range-left small name="time"></ion-icon>
             <ion-icon range-right name="time"></ion-icon>
           </ion-range>

@@ -43,7 +43,6 @@ export class QuestionnaireFinMigrainePage {
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
     console.log('nouvelle migraine',this.nouvelleMigraine);
     if (this.nouvelleMigraine.Fin == null) {
-      
       this.JourMax = new Date().getDate();
       this.JourMin = this.DateDebutMigraine();
 
@@ -127,7 +126,7 @@ export class QuestionnaireFinMigrainePage {
     let heure: string = "";
     //console.log('heure modifié : ', this.HeureModifie);
     //console.log('heure actuel : ', date.getHours());
-    if (this.HeureModifie == date.getHours()) {
+    if (this.HeureModifie == date.getHours() && this.JourModifie == date.getDate()) {
       //console.log('jourActuel ',this.JoursActuel());
       this.JourFin = this.JoursActuel();
     }
@@ -151,9 +150,26 @@ export class QuestionnaireFinMigrainePage {
     if (this.JourModifie < 10) jour = "0" + this.JourModifie.toString();
     else jour = this.JourModifie.toString();
 
-    if (this.JourModifie < this.JourMax) this.HeureMax = 23;
-    else this.HeureMax = new Date().getHours();
 
+    if (this.JourModifie < this.JourMax){
+      this.HeureMax = 23;
+      
+      if (this.JourModifie > this.JourMin){
+        this.HeureMin = 0;
+      }
+      else if (this.JourModifie == this.JourMin){
+        this.HeureMin = this.HeureDebutMigraine();
+      }
+    } 
+
+    if (this.JourModifie == this.JourMax){
+      this.HeureMax = date.getHours();
+      if (this.JourModifie == this.DateDebutMigraine()){
+        this.HeureMin = this.HeureDebutMigraine();
+      } else this.HeureMin = 0;
+      
+    }
+    this.HeureModifie = this.HeureMax;
     console.log('jour modifie', this.JourModifie);
     console.log('jour', jour);
     this.DateFin = annee + "-" + moi + "-" + jour;

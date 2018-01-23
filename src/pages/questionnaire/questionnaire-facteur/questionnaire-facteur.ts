@@ -8,6 +8,7 @@ import {  MenuPage } from '../../../pages/menu/menu';
 import { Compte } from '../../../model/compte';
 import { Medicament } from '../../../model/medicament';
 import { Migraine } from '../../../model/migraine';
+import { Date, Heure } from './../../../model/date_heure';
 import { Facteur, TypeFacteur, TypeReponse } from '../../../model/facteur';
 /**
  * Generated class for the QuestionnaireFacteurPage page.
@@ -47,33 +48,31 @@ export class QuestionnaireFacteurPage {
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
 
     console.log('facteurs ',this.nouvelleMigraine.Facteurs);
-    if (this.nouvelleMigraine.Facteurs.length > 0){
-      this.nouvelleMigraine.Facteurs.forEach(facteur => {
-        this.compte.MesFacteurs.forEach(mesfacteurs => {
-          if (facteur.ID = mesfacteurs.ID){
-            console.log('type de réponse');
-            if (facteur.TypeDeReponse.ID == 2){
-              mesfacteurs.Selection = true;
-              console.log('la sélection est : ',mesfacteurs.Selection);
-              
-            }
-            if (facteur.TypeDeReponse.ID == 1){
-              mesfacteurs.Reponse = facteur.Reponse;
-              this.IntensiteFacteur(facteur.Reponse);
-              console.log('la valeur d\'intensité est : ',mesfacteurs.Reponse);
-            }
-          } 
+    if (this.nouvelleMigraine.Facteurs != null){
+      if (this.nouvelleMigraine.Facteurs.length > 0){
+        this.nouvelleMigraine.Facteurs.forEach(facteur => {
+          this.compte.MesFacteurs.forEach(mesfacteurs => {
+            if (facteur.ID = mesfacteurs.ID){
+              console.log('type de réponse');
+              if (facteur.TypeDeReponse.ID == 2){
+                mesfacteurs.Selection = true;
+                console.log('la sélection est : ',mesfacteurs.Selection);
+              }
+              if (facteur.TypeDeReponse.ID == 1){
+                mesfacteurs.Reponse = facteur.Reponse;
+                this.IntensiteFacteur(facteur.Reponse);
+                console.log('la valeur d\'intensité est : ',mesfacteurs.Reponse);
+              }
+            } 
+          });
         });
-      });
+      }
+      else{
+        console.log('liste facteur vide');
+        this.nouvelleMigraine.Facteurs = [];
+        this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
+      }
     }
-    else{
-      console.log('liste facteur vide');
-      this.nouvelleMigraine.Facteurs = [];
-      this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
-      
-    }
-  
-    
     //console.log('nouvelle migraine',this.nouvelleMigraine);
   }
 
@@ -117,8 +116,29 @@ export class QuestionnaireFacteurPage {
           this.nouvelleMigraine.Facteurs.push(nouveauFacteur);
         }
       });
-    this.compte.MesMigraines[0] = this.nouvelleMigraine;
-    this.compteServiceProvider.AjouterMigraine()
+    let MigrainEnvois : Migraine = new Migraine();
+    MigrainEnvois.ID = this.nouvelleMigraine.ID;
+    MigrainEnvois.Complet = true;
+    MigrainEnvois.Debut = this.nouvelleMigraine.Debut;
+    MigrainEnvois.Fin = this.nouvelleMigraine.Fin;
+
+    MigrainEnvois.DateDebut as Date;
+    MigrainEnvois.DateFin as Date;
+    MigrainEnvois.HeureDebut as Heure;
+    MigrainEnvois.HeureFin as Heure;
+
+    MigrainEnvois.DateDebut = this.nouvelleMigraine.DateDebut;
+    MigrainEnvois.DateFin = this.nouvelleMigraine.DateFin;
+    MigrainEnvois.HeureDebut = this.nouvelleMigraine.HeureDebut;
+    MigrainEnvois.HeureFin = this.nouvelleMigraine.HeureFin;
+
+    MigrainEnvois.Intensite = this.nouvelleMigraine.Intensite;
+    MigrainEnvois.MedicamentsPris = this.nouvelleMigraine.MedicamentsPris;
+    MigrainEnvois.Facteurs = this.nouvelleMigraine.Facteurs;
+      
+    //this.compte.MesMigraines = [];
+    //this.compte.MesMigraines.push(MigrainEnvois);
+    this.compteServiceProvider.AjouterMigraine(MigrainEnvois)
       .subscribe(
         (retour) => 
         {

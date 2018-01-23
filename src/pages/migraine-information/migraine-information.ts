@@ -95,6 +95,7 @@ export class MigraineInformationPage {
     this.viewController.dismiss();
   }
   Modifier(){
+    console.log('Modifier()');
     let compte : Compte;
      this.compteServiceProvider.compte.subscribe(res => compte = res);
      compte.MesMigraines = [];

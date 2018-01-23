@@ -22,10 +22,12 @@
       <ion-label></ion-label>
       <ion-item>
           <ion-label>Date de Début</ion-label>
-          <ion-datetime displayFormat="DDDD DD MMMM YYYY" [(ngModel)]="DateDebut"></ion-datetime>
+          <ion-datetime displayFormat="DDDD DD MMMM YYYY" [(ngModel)]="DateDebut"
+>
+        </ion-datetime>
       </ion-item>
       <ion-item class=glissieredateDebut>
-        <ion-range class="glissiereJours" min="1" max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie" (mouseenter)="jourModifie()" color="danger">
+        <ion-range class="glissiereJours" min={{JourMin}} max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie" (ionChange)="jourModifie()" color="danger">
           <ion-icon range-left small name="calendar"></ion-icon>
           <ion-icon range-right name="calendar"></ion-icon>
         </ion-range>
@@ -36,7 +38,7 @@
           <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm ss" [(ngModel)]="JourDebut"></ion-datetime>
       </ion-item>
       <ion-item class=glissiereHeureDebut>
-        <ion-range class="glissiereHeure" min="0" max={{HeureMax}} step="1" snaps="true" pin="true" [(ngModel)]="HeureModifie" (mouseenter)="heureModifie()" color="danger">
+        <ion-range class="glissiereHeure" min={{HeureMin}} max={{HeureMax}} step="1" snaps="true" pin="true" [(ngModel)]="HeureModifie" (ionChange)="heureModifie()" color="danger">
           <ion-icon range-left small name="time"></ion-icon>
           <ion-icon range-right name="time"></ion-icon>
         </ion-range>

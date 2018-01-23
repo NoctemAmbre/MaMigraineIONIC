@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
 import { Compte } from '../../model/compte';
 import { Migraine } from '../../model/migraine';
+import { Medicament } from '../../model/medicament';
+import { Facteur } from '../../model/facteur';
 import { MigraineInformationPage } from '../../pages/migraine-information/migraine-information';
 
 /**
@@ -22,7 +24,7 @@ export class MigraineHistoriquePage {
 
   compte : Compte;
 
-  MesMigraines : Migraine[] = [];
+  //MesMigraines : Migraine[] = [];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -33,9 +35,11 @@ export class MigraineHistoriquePage {
   ionViewDidLoad() {
     this.compteServiceProvider.compte.subscribe(resc => this.compte = resc);
     console.log('compte pour affichage migraine', this.compte);
-    this.MesMigraines = (this.compte as Compte).MesMigraines as Migraine[];
+    (this.compte as Compte).MesMigraines as Migraine[];
+    // (this.compte as Compte).MesMigraines = [];
+    // (this.compte as Compte).MesMigraines.push(new Migraine());
     
-    console.log('migraine', this.compte.MesMigraines);
+    console.log('mon compte', this.compte);
   }
 
   VoirMigraine(migraine : Migraine)

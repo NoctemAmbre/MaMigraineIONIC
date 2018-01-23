@@ -27,9 +27,13 @@ export class QuestionnaireDebutMigrainePage {
   DateDebut : string;
   JourDebut : string;
   HeureMax : number = new Date().getHours();
+  HeureMin : number = 0;
   JourMax : number = new Date().getDate();
+  JourMin : number = 1;
   HeureModifie : number = new Date().getHours();
   JourModifie : number = new Date().getDate();
+
+  NouvelleEnregistrement : Boolean = false;
   //month: string = '2018-01-10';
 
   // public event = {
@@ -58,6 +62,7 @@ export class QuestionnaireDebutMigrainePage {
       
       console.log(this.DateDebut);
       console.log(this.JourDebut);
+      this.NouvelleEnregistrement = true;
     }
     else {
       console.log('migraine a modifier', this.NouvelleMigraine);
@@ -139,7 +144,7 @@ export class QuestionnaireDebutMigrainePage {
     let heure : string = "";
     //console.log('heure modifié : ', this.HeureModifie);
     //console.log('heure actuel : ', date.getHours());
-    if (this.HeureModifie == date.getHours()) {
+    if (this.HeureModifie == date.getHours() && this.JourModifie == date.getDate()) {
       //console.log('jourActuel ',this.JoursActuel());
       this.JourDebut = this.JoursActuel();
     }
@@ -164,10 +169,20 @@ export class QuestionnaireDebutMigrainePage {
     if (this.JourModifie < 10) jour = "0" + this.JourModifie.toString();
     else jour = this.JourModifie.toString();
 
-    if (this.JourModifie < this.JourMax) this.HeureMax = 23;
-    else this.HeureMax = new Date().getHours();
-    console.log('jour modifie', this.JourModifie);
-    console.log('jour', jour);
+    if (this.JourModifie < this.JourMax){
+      this.HeureMax = 23;
+      if (this.JourModifie > this.JourMin){
+        this.HeureMin = 0;
+      }else{
+        this.HeureMin = 0;
+      }
+    } 
+    else {
+      this.HeureMax = new Date().getHours();
+      this.HeureMin = 0;
+    }
+
+    if (this.NouvelleEnregistrement) this.HeureModifie = this.HeureMax;
     this.DateDebut = annee + "-" + moi + "-" + jour;
   }
 
