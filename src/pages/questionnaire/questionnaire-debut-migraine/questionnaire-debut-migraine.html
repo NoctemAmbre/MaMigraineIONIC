@@ -22,7 +22,7 @@
       <ion-label></ion-label>
       <ion-item>
           <ion-label>Date de Début</ion-label>
-          <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="DateDebut"></ion-datetime>
+          <ion-datetime displayFormat="DDDD DD MMMM YYYY" [(ngModel)]="DateDebut"></ion-datetime>
       </ion-item>
       <ion-item class=glissieredateDebut>
         <ion-range class="glissiereJours" min="1" max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie" (mouseenter)="jourModifie()" color="danger">

@@ -41,18 +41,26 @@ export class QuestionnaireFinMigrainePage {
     console.log('ionViewDidLoad QuestionnaireFinMigrainePage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
+    console.log('nouvelle migraine',this.nouvelleMigraine);
     if (this.nouvelleMigraine.Fin == null) {
+      
+      this.JourMax = new Date().getDate();
+      this.JourMin = this.DateDebutMigraine();
+
       this.HeureMax = new Date().getHours();
       this.HeureMin = this.HeureDebutMigraine();
-      this.JourMin = this.DateDebutMigraine();
+      
       this.DateFin = this.DateActuel();
       this.JourFin = this.JoursActuel();
+      console.log('jour max',this.JourMax);
+      console.log('jour min',this.JourMin);
+      console.log('jour modifie', this.JourModifie);
     }
     else{
       this.nouvelleMigraine.Fin = this.Nettoyage(this.nouvelleMigraine.Fin);
       this.DateFin = this.nouvelleMigraine.Fin.substring(0, 10);
       this.JourFin = this.nouvelleMigraine.Fin.substring(11, 16);
-      this.HeureMax = 24;
+      this.HeureMax = 23;
       this.HeureMin = 0;
       this.JourMin = 1;
       this.JourMax = new Date().getDay();
@@ -142,6 +150,9 @@ export class QuestionnaireFinMigrainePage {
     let jour: string = "";
     if (this.JourModifie < 10) jour = "0" + this.JourModifie.toString();
     else jour = this.JourModifie.toString();
+
+    if (this.JourModifie < this.JourMax) this.HeureMax = 23;
+    else this.HeureMax = new Date().getHours();
 
     console.log('jour modifie', this.JourModifie);
     console.log('jour', jour);

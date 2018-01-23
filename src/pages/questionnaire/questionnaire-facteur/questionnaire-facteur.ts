@@ -109,8 +109,8 @@ export class QuestionnaireFacteurPage {
         if (facteur.Selection)
         {
           let nouveauFacteur : Facteur = new Facteur();
-          // nouveauFacteur.TypeDeFacteur = new TypeFacteur();
-          // nouveauFacteur.TypeDeReponse = new TypeReponse();
+          nouveauFacteur.TypeDeFacteur = facteur.TypeDeFacteur;
+          nouveauFacteur.TypeDeReponse = facteur.TypeDeReponse;
           nouveauFacteur.ID = facteur.ID;
           nouveauFacteur.Reponse = facteur.Reponse;
           console.log(nouveauFacteur);
@@ -128,6 +128,7 @@ export class QuestionnaireFacteurPage {
            localStorage.setItem('Token', this.compte.Token);
            localStorage.setItem('Compte', JSON.stringify(this.compte));
            this.compteServiceProvider.changeCompte(this.compte);
+           this.compteServiceProvider.AffichageMigraineIncomplete();
            console.log(retour)
            let AffichageHome = this.modalController.create( MenuPage );
            AffichageHome.present();

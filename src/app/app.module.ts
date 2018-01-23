@@ -47,8 +47,13 @@ import { MedecinServiceProvider } from '../providers/medecin/medecin-service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicModule.forRoot(MyApp, {
+      monthNames: ['janvier', 'fevrier', 'mars', 'avril', 'mai','juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre' ],
+      monthShortNames: ['jan', 'fev', 'mar', 'avr', 'mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec'],
+      dayNames: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+      dayShortNames: ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim']
+    }),
+    IonicStorageModule.forRoot()      
   ],
   bootstrap: [IonicApp],
   entryComponents: [
