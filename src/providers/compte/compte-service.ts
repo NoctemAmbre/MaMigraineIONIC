@@ -81,6 +81,16 @@ export class CompteServiceProvider {
     console.log('Ajout Migraine', body);
     return this.http.post<Compte>(this.WebService + "/Tel/Patient/AjoutMigraineIncomplet?Value="+ btoa(body), '', {headers : headers, observe : 'response'}).pipe(map(this.extractData));
   }
+
+  public supprimerMigraine() : Observable<{}>
+  {
+    var headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    var body = JSON.stringify({IDWeb : this.comptes.value.IDWeb, Identifiant : this.comptes.value.Identifiant, MesMigraines : [{"ID":this.comptes.value.MesMigraines[0].ID}], Token : localStorage.getItem('Token') });
+    
+    console.log('le compte', this.comptes.value);
+    console.log('le body envoyé', body);
+    return this.http.post<Compte>(this.WebService + "/Tel/Patient/SupprMigraine?Value="+ btoa(body), '', {headers : headers, observe : 'response'}).pipe(map(this.extractData));
+  }
   
     // return this.http.post(this.WebService + '/Tel/login').pipe(
     //   map(this.extractData),

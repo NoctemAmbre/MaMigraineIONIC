@@ -36,6 +36,8 @@ export class MigraineHistoriquePage {
     this.compteServiceProvider.compte.subscribe(resc => this.compte = resc);
     console.log('compte pour affichage migraine', this.compte);
     (this.compte as Compte).MesMigraines as Migraine[];
+
+    if (this.compte.Identifiant == null) this.LoginToken();
     // (this.compte as Compte).MesMigraines = [];
     // (this.compte as Compte).MesMigraines.push(new Migraine());
     
@@ -44,7 +46,25 @@ export class MigraineHistoriquePage {
 
   VoirMigraine(migraine : Migraine)
   {
+    console.log('Etat de MesMigraine dans Historique : ', this.compte.MesMigraines);
     let AffichageMigraine = this.ModalController.create(MigraineInformationPage, {Migraine : migraine});
     AffichageMigraine.present();
+  }
+
+  LoginToken()
+  {
+    console.log('je vais chercher les informations sur coptes sur le webservice');
+    this.compteServiceProvider.LoginToken()
+    .subscribe(
+      (retour) => 
+      {
+        this.compte = retour as Compte;
+        this.compte.MesMedicaments = (retour as Compte).MesMedicaments as Medicament[];
+        this.compte.MesMigraines = (retour as Compte).MesMigraines as Migraine[];
+        localStorage.setItem('Token', this.compte.Token);
+        localStorage.setItem('Compte', JSON.stringify(this.compte));
+        this.compteServiceProvider.changeCompte(this.compte);
+      },
+      error => console.log(error));
   }
 }

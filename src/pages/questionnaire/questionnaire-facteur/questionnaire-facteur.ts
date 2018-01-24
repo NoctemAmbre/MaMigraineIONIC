@@ -46,33 +46,29 @@ export class QuestionnaireFacteurPage {
     console.log('ionViewDidLoad QuestionnaireFacteurPage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
-
+    this.nouvelleMigraine.Facteurs as Facteur[];
     console.log('facteurs ',this.nouvelleMigraine.Facteurs);
-    if (this.nouvelleMigraine.Facteurs != null){
-      if (this.nouvelleMigraine.Facteurs.length > 0){
-        this.nouvelleMigraine.Facteurs.forEach(facteur => {
           this.compte.MesFacteurs.forEach(mesfacteurs => {
-            if (facteur.ID = mesfacteurs.ID){
               console.log('type de réponse');
-              if (facteur.TypeDeReponse.ID == 2){
-                mesfacteurs.Selection = true;
-                console.log('la sélection est : ',mesfacteurs.Selection);
-              }
-              if (facteur.TypeDeReponse.ID == 1){
-                mesfacteurs.Reponse = facteur.Reponse;
-                this.IntensiteFacteur(facteur.Reponse);
+              if (mesfacteurs.TypeDeReponse.ID == 1){
+                if (mesfacteurs.Reponse == 0){
+                  this.EtoileSelection = false;
+                }else this.EtoileSelection = true;
+                this.IntensiteFacteur(mesfacteurs.Reponse);
                 console.log('la valeur d\'intensité est : ',mesfacteurs.Reponse);
               }
-            } 
-          });
-        });
-      }
-      else{
-        console.log('liste facteur vide');
-        this.nouvelleMigraine.Facteurs = [];
-        this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
-      }
-    }
+              if (mesfacteurs.TypeDeReponse.ID == 2){
+                if (mesfacteurs.Selection == null) mesfacteurs.Selection = false;
+              }
+            });
+        
+      // }
+      // else{
+      //   console.log('liste facteur vide');
+      //   this.nouvelleMigraine.Facteurs = [];
+      //   this.compte.MesFacteurs.forEach(facteur => facteur.Selection = false); //mettre toute les valeurs à fausse
+      // }
+    // }
     //console.log('nouvelle migraine',this.nouvelleMigraine);
   }
 
@@ -91,9 +87,10 @@ export class QuestionnaireFacteurPage {
   }
 
   ValidIntensiteFacteur(facteur : Facteur, valeur : number){
-    if (this.EtoileSelection) this.IntensiteFacteur(valeur);
-    //this.EtoileSelection == false ? true : false;
-    if (this.EtoileSelection) this.EtoileSelection = false;
+    if (this.EtoileSelection){
+      this.IntensiteFacteur(valeur);
+      this.EtoileSelection = false;
+    } 
     else this.EtoileSelection = true;
     console.log(this.EtoileSelection);
     facteur.Reponse = valeur;
@@ -105,40 +102,44 @@ export class QuestionnaireFacteurPage {
     this.nouvelleMigraine.Facteurs = [];
     this.compte.MesFacteurs.forEach(facteur => 
       {
-        if (facteur.Selection)
-        {
-          let nouveauFacteur : Facteur = new Facteur();
-          nouveauFacteur.TypeDeFacteur = facteur.TypeDeFacteur;
-          nouveauFacteur.TypeDeReponse = facteur.TypeDeReponse;
-          nouveauFacteur.ID = facteur.ID;
-          nouveauFacteur.Reponse = facteur.Reponse;
-          console.log(nouveauFacteur);
+
+        // if (facteur.Selection == true)
+        // {
+          let nouveauFacteur : Facteur;
+          nouveauFacteur = {"ID":facteur.ID, "Reponse":facteur.Reponse} as Facteur;
+          console.log('Facteurcréé' , nouveauFacteur);
           this.nouvelleMigraine.Facteurs.push(nouveauFacteur);
-        }
+          console.log('Facteurajouté' , this.nouvelleMigraine.Facteurs);
+        // }
       });
-    let MigrainEnvois : Migraine = new Migraine();
-    MigrainEnvois.ID = this.nouvelleMigraine.ID;
-    MigrainEnvois.Complet = true;
-    MigrainEnvois.Debut = this.nouvelleMigraine.Debut;
-    MigrainEnvois.Fin = this.nouvelleMigraine.Fin;
+    // let MigrainEnvois : Migraine = new Migraine();
+    // MigrainEnvois.ID = this.nouvelleMigraine.ID;
+    // MigrainEnvois.Complet = true;
+    // MigrainEnvois.Debut = this.nouvelleMigraine.Debut;
+    // MigrainEnvois.Fin = this.nouvelleMigraine.Fin;
 
-    MigrainEnvois.DateDebut as Date;
-    MigrainEnvois.DateFin as Date;
-    MigrainEnvois.HeureDebut as Heure;
-    MigrainEnvois.HeureFin as Heure;
+    // MigrainEnvois.DateDebut as Date;
+    // MigrainEnvois.DateFin as Date;
+    // MigrainEnvois.HeureDebut as Heure;
+    // MigrainEnvois.HeureFin as Heure;
 
-    MigrainEnvois.DateDebut = this.nouvelleMigraine.DateDebut;
-    MigrainEnvois.DateFin = this.nouvelleMigraine.DateFin;
-    MigrainEnvois.HeureDebut = this.nouvelleMigraine.HeureDebut;
-    MigrainEnvois.HeureFin = this.nouvelleMigraine.HeureFin;
+    // MigrainEnvois.DateDebut = this.nouvelleMigraine.DateDebut;
+    // MigrainEnvois.DateFin = this.nouvelleMigraine.DateFin;
+    // MigrainEnvois.HeureDebut = this.nouvelleMigraine.HeureDebut;
+    // MigrainEnvois.HeureFin = this.nouvelleMigraine.HeureFin;
 
-    MigrainEnvois.Intensite = this.nouvelleMigraine.Intensite;
-    MigrainEnvois.MedicamentsPris = this.nouvelleMigraine.MedicamentsPris;
-    MigrainEnvois.Facteurs = this.nouvelleMigraine.Facteurs;
+    // MigrainEnvois.Intensite = this.nouvelleMigraine.Intensite;
+    // MigrainEnvois.MedicamentsPris = this.nouvelleMigraine.MedicamentsPris;
+    // MigrainEnvois.Facteurs = this.nouvelleMigraine.Facteurs;
       
-    //this.compte.MesMigraines = [];
-    //this.compte.MesMigraines.push(MigrainEnvois);
-    this.compteServiceProvider.AjouterMigraine(MigrainEnvois)
+    // this.compte.MesMigraines = [];
+    // this.compte.MesMigraines.push(MigrainEnvois);
+    this.compte.MesMigraines[0].Facteurs = this.nouvelleMigraine.Facteurs;
+    console.log('migraine facteur',this.compte.MesMigraines[0]);
+    console.log('La migraine : ', this.nouvelleMigraine);
+    console.log('le compte avec la migraine', this.compte);
+    this.compteServiceProvider.changeCompte(this.compte);
+    this.compteServiceProvider.AjouterMigraine()
       .subscribe(
         (retour) => 
         {

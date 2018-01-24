@@ -41,7 +41,7 @@ export class QuestionnaireFinMigrainePage {
     console.log('ionViewDidLoad QuestionnaireFinMigrainePage');
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
     this.nouvelleMigraine = this.compte.MesMigraines[0] as Migraine;
-    console.log('nouvelle migraine',this.nouvelleMigraine);
+    
     if (this.nouvelleMigraine.Fin == null) {
       this.JourMax = new Date().getDate();
       this.JourMin = this.DateDebutMigraine();
@@ -189,6 +189,7 @@ export class QuestionnaireFinMigrainePage {
 
   private Suivant() {
     this.compte.MesMigraines[0].Fin = this.DateFin + 'T' + this.JourFin;
+    console.log('migraine fin',this.compte.MesMigraines[0]);
     this.compteServiceProvider.changeCompte(this.compte);
     let AffichageIntensite = this.modalController.create(QuestionnaireIntensiteMigrainePage);
     AffichageIntensite.present();

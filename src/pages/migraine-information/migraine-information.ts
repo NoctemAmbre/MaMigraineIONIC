@@ -9,6 +9,7 @@ import { Migraine } from '../../model/migraine';
 import { Compte } from '../../model/compte';
 import { Medicament } from '../../model/medicament';
 import { Facteur } from '../../model/facteur';
+import { Date, Heure } from './../../model/date_heure';
 
 
 @IonicPage()
@@ -18,6 +19,7 @@ import { Facteur } from '../../model/facteur';
 })
 export class MigraineInformationPage {
 
+  compte : Compte;
   migraine : Migraine;
   constructor(
     public compteServiceProvider : CompteServiceProvider,
@@ -30,6 +32,7 @@ export class MigraineInformationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MigraineInformationPage');
+    this.compteServiceProvider.compte.subscribe(resc => this.compte = resc);
     console.log(this.navParams.get('Migraine'));
     this.migraine = this.navParams.get('Migraine') as Migraine;
   }
@@ -96,14 +99,48 @@ export class MigraineInformationPage {
   }
   Modifier(){
     console.log('Modifier()');
-    let compte : Compte;
-     this.compteServiceProvider.compte.subscribe(res => compte = res);
-     compte.MesMigraines = [];
-     compte.MesMigraines.push(this.migraine);
+     //let compte : Compte;
+     //this.compteServiceProvider.compte.subscribe(res => compte = res);
+     //compte.MesMigraines = [];
+     //compte.MesMigraines.push(this.migraine);
      let modifMigraine = this.ModalController.create(QuestionnaireDebutMigrainePage, {Migraine : this.migraine});
      modifMigraine.present();
   }
   supprimer(){
+      let alert = this.alertController.create({
+      title: 'Suppression Migraine',
+      message: 'Vous voulez supprimer la migraine ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () => {
+            //console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirmer',
+          handler: () => {
+            this.compte.MesMigraines = [];
 
+            let MigrainEnvois : Migraine = new Migraine();
+            MigrainEnvois.ID = this.migraine.ID;
+            this.compte.MesMigraines = [];
+            this.compte.MesMigraines.push(MigrainEnvois);
+            this.compteServiceProvider.supprimerMigraine().subscribe((retour) => {
+              this.compte = retour as Compte;
+              this.compte.MesMedicaments = (retour as Compte).MesMedicaments as Medicament[];
+              this.compte.MesMigraines = (retour as Compte).MesMigraines as Migraine[];
+              localStorage.setItem('Token', this.compte.Token);
+              localStorage.setItem('Compte', JSON.stringify(this.compte));
+              this.compteServiceProvider.changeCompte(this.compte);
+              this.compteServiceProvider.AffichageMigraineIncomplete();
+              this.viewController.dismiss();
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

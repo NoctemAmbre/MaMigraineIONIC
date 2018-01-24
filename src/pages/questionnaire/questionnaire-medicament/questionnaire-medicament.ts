@@ -66,7 +66,8 @@ export class QuestionnaireMedicamentPage {
         this.nouvelleMigraine.MedicamentsPris.push(nouveauMedicament);
       }
     });
-    this.compte.MesMigraines[0] = this.nouvelleMigraine;
+    this.compte.MesMigraines[0].MedicamentsPris = this.nouvelleMigraine.MedicamentsPris;
+    console.log('migraine medicament',this.compte.MesMigraines[0]);
     this.compteServiceProvider.changeCompte(this.compte);
     let AffichageFacteur = this.modalController.create( QuestionnaireFacteurPage );
     AffichageFacteur.present();

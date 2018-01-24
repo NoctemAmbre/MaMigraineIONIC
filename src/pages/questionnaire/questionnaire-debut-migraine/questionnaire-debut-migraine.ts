@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 import { QuestionnaireFinMigrainePage } from '../../../pages/questionnaire/questionnaire-fin-migraine/questionnaire-fin-migraine';
+import { MenuPage } from '../../../pages/menu/menu';
 
 import { CompteServiceProvider} from '../../../providers/compte/compte-service';
 import { Compte } from '../../../model/compte';
@@ -193,6 +194,7 @@ export class QuestionnaireDebutMigrainePage {
     this.NouvelleMigraine.Debut = this.DateDebut + 'T' + this.JourDebut;
     this.compte.MesMigraines = [];
     this.compte.MesMigraines.push(this.NouvelleMigraine);
+    console.log('migraine debut',this.compte.MesMigraines[0]);
     this.compteServiceProvider.changeCompte(this.compte);
     let AffichageFinMigraine = this.modalController.create(QuestionnaireFinMigrainePage);
     AffichageFinMigraine.present();
@@ -202,6 +204,9 @@ export class QuestionnaireDebutMigrainePage {
   
   private Annule()
   {
+    console.log('Etat de MesMigraine a l\'annulation : ', this.compte.MesMigraines);
+    //let AffichageHome = this.modalController.create(MenuPage);
+    //AffichageHome.present();
     this.viewController.dismiss();
   }
 }
