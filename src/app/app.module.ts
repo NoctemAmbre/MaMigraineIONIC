@@ -24,6 +24,7 @@ import { QuestionnaireFacteurPage } from '../pages/questionnaire/questionnaire-f
 
 import { CompteServiceProvider } from '../providers/compte/compte-service';
 import { MedecinServiceProvider } from '../providers/medecin/medecin-service';
+import { MigraineHistoriqueDirective } from '../directives/migraine-historique/migraine-historique';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MedecinServiceProvider } from '../providers/medecin/medecin-service';
     QuestionnaireFinMigrainePage,
     QuestionnaireIntensiteMigrainePage,
     QuestionnaireMedicamentPage,
-    QuestionnaireFacteurPage
+    QuestionnaireFacteurPage,
+    MigraineHistoriqueDirective
   ],
   imports: [
     BrowserModule,

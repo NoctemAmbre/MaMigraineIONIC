@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
@@ -7,6 +7,7 @@ import { Migraine } from '../../model/migraine';
 import { Medicament } from '../../model/medicament';
 import { Facteur } from '../../model/facteur';
 import { MigraineInformationPage } from '../../pages/migraine-information/migraine-information';
+import { MigraineHistoriqueDirective } from '../../directives/migraine-historique/migraine-historique';
 
 /**
  * Generated class for the MigraineHistoriquePage page.
@@ -23,6 +24,7 @@ import { MigraineInformationPage } from '../../pages/migraine-information/migrai
 export class MigraineHistoriquePage {
 
   compte : Compte;
+  color: string;
 
   //MesMigraines : Migraine[] = [];
   constructor(

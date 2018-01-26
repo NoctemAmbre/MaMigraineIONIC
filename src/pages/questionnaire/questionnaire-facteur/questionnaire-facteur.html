@@ -23,49 +23,44 @@
         <div class="textfacteur">{{facteur.Question}}</div>
         <div *ngIf="facteur.TypeDeReponse.ID == 2" class="permutteur">
           <div class="affichagenon" *ngIf="facteur.Selection == false">Non</div>
-          <div class="affichagenon" *ngIf="facteur.Selection == true"></div>
+          <div class="affichagenon" *ngIf="facteur.Selection == true" ></div>
           <ion-toggle class="checkfacteur" [(ngModel)]="facteur.Selection" checked="false" (click)="Permut(facteur)"></ion-toggle>
           <div class="affichageoui" *ngIf="facteur.Selection">Oui</div>
           <div class="affichageoui" *ngIf="facteur.Selection == false"></div>
         </div>
         <div *ngIf="facteur.TypeDeReponse.ID == 1" class="permutteur">
-          <div class="blockEtoiles" *ngIf="EtoileSelection == false">
-            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 1)" (mouseenter)="IntensiteFacteur(1)"
-              block>
-              <ion-icon button class="ministars1" range-right name={{Etoile1}}></ion-icon>
+          <div id="facteurid_{{facteur.ID}}" class="blockEtoiles" *ngIf="EtoileSelection == false" (mouseleave)="etoileLeave(0)">           
+            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 1)" (mouseenter)="etoileEnter(1)" block>
+              <ion-icon button class="ministars1" range-right name='star-outline'></ion-icon>
             </button>
-            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 2)" (mouseenter)="IntensiteFacteur(2)"
-              block>
-              <ion-icon button class="ministars2" range-right name={{Etoile2}}></ion-icon>
+            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 2)" (mouseenter)="etoileEnter(2)" block>
+              <ion-icon button class="ministars2" range-right name='star-outline'></ion-icon>
             </button>
-            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 3)" (mouseenter)="IntensiteFacteur(3)"
-              block>
-              <ion-icon button class="ministars3" range-right name={{Etoile3}}></ion-icon>
+            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 3)" (mouseenter)="etoileEnter(3)" block>
+              <ion-icon button class="ministars3" range-right name='star-outline'></ion-icon>
             </button>
-            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 4)" (mouseenter)="IntensiteFacteur(4)"
-              block>
-              <ion-icon button class="ministars4" range-right name={{Etoile4}}></ion-icon>
+            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 4)" (mouseenter)="etoileEnter(4)" block>
+              <ion-icon button class="ministars4" range-right name='star-outline'></ion-icon>
             </button>
-            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 5)" (mouseenter)="IntensiteFacteur(5)"
-              block>
-              <ion-icon button class="ministars5" range-right name={{Etoile5}}></ion-icon>
-            </button>
+            <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 5)" (mouseenter)="etoileEnter(5)" block>
+              <ion-icon button class="ministars5" range-right name='star-outline'></ion-icon>
+            </button> 
           </div>
-          <div class="blockEtoiles" *ngIf=EtoileSelection>
+          <div id="facteurid_{{facteur.ID}}" class="blockEtoiles" *ngIf=EtoileSelection>
             <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 1)" block>
-              <ion-icon button class="ministars1Select" range-right name={{Etoile1}}></ion-icon>
+              <ion-icon button class="ministars1" range-right name='star-outline'></ion-icon>
             </button>
             <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 2)" block>
-              <ion-icon button class="ministars2Select" range-right name={{Etoile2}}></ion-icon>
+              <ion-icon button class="ministars2" range-right name='star-outline'></ion-icon>
             </button>
             <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 3)" block>
-              <ion-icon button class="ministars3Select" range-right name={{Etoile3}}></ion-icon>
+              <ion-icon button class="ministars3" range-right name='star-outline'></ion-icon>
             </button>
             <button class="boutonetoile" color="primary" (click)="ValidIntensiteFacteur(facteur, 4)" block>
-              <ion-icon button class="ministars4Select" range-right name={{Etoile4}}></ion-icon>
+              <ion-icon button class="ministars4" range-right name='star-outline'></ion-icon>
             </button>
             <button class="boutonetoile" color="primary" (click)="ValidIntenisteFacteur(facteur, 5)" block>
-              <ion-icon button class="ministars5Select" range-right name={{Etoile5}}></ion-icon>
+              <ion-icon button class="ministars5" range-right name='star-outline'></ion-icon>
             </button>
           </div>
         </div>

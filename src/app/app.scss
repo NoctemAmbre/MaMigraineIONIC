@@ -262,3 +262,21 @@ ion-toggle.checkfacteur{
 //     color: color($colors, danger);
 // }
 
+// JAY
+
+i
+{
+    display: block;
+    background-color: red;
+    width: 30px; height: 30px;
+
+    &.active
+    {
+        background-color: blue;
+    }
+    &:hover
+    {
+        background-color: green;
+    }
+}
+

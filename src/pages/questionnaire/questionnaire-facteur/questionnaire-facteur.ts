@@ -27,11 +27,11 @@ export class QuestionnaireFacteurPage {
   compte : Compte;
   nouvelleMigraine : Migraine;
 
-  Etoile1 : string = "star-outline";
-  Etoile2 : string = "star-outline";
-  Etoile3 : string = "star-outline";
-  Etoile4 : string = "star-outline";
-  Etoile5 : string = "star-outline";
+  // Etoile1 : string = "star-outline";
+  // Etoile2 : string = "star-outline";
+  // Etoile3 : string = "star-outline";
+  // Etoile4 : string = "star-outline";
+  // Etoile5 : string = "star-outline";
   EtoileSelection : boolean = false;
 
   constructor(
@@ -54,7 +54,7 @@ export class QuestionnaireFacteurPage {
                 if (mesfacteurs.Reponse == 0){
                   this.EtoileSelection = false;
                 }else this.EtoileSelection = true;
-                this.IntensiteFacteur(mesfacteurs.Reponse);
+                /*this.IntensiteFacteur(mesfacteurs.Reponse);*/
                 console.log('la valeur d\'intensité est : ',mesfacteurs.Reponse);
               }
               if (mesfacteurs.TypeDeReponse.ID == 2){
@@ -77,63 +77,31 @@ export class QuestionnaireFacteurPage {
     else facteur.Reponse = 0;
   }
 
-  IntensiteFacteur(valeur : number){
-    //console.log(valeur);
+ /* IntensiteFacteur(valeur : number){
+    // console.log(this);
+    if (valeur == 0) {this.Etoile1 = "star-outline";this.Etoile2 = "star-outline";this.Etoile3 = "star-outline";this.Etoile4 = "star-outline";this.Etoile5 = "star-outline";}
     if (valeur == 1) {this.Etoile1 = "star";this.Etoile2 = "star-outline";this.Etoile3 = "star-outline";this.Etoile4 = "star-outline";this.Etoile5 = "star-outline";}
     if (valeur == 2) {this.Etoile1 = "star";this.Etoile2 = "star";this.Etoile3 = "star-outline";this.Etoile4 = "star-outline";this.Etoile5 = "star-outline";}
     if (valeur == 3) {this.Etoile1 = "star";this.Etoile2 = "star";this.Etoile3 = "star";this.Etoile4 = "star-outline";this.Etoile5 = "star-outline";}
     if (valeur == 4) {this.Etoile1 = "star";this.Etoile2 = "star";this.Etoile3 = "star";this.Etoile4 = "star";this.Etoile5 = "star-outline";}
     if (valeur == 5) {this.Etoile1 = "star";this.Etoile2 = "star";this.Etoile3 = "star";this.Etoile4 = "star";this.Etoile5 = "star";}
-  }
+  }*/
+  
 
-  ValidIntensiteFacteur(facteur : Facteur, valeur : number){
-    if (this.EtoileSelection){
-      this.IntensiteFacteur(valeur);
-      this.EtoileSelection = false;
-    } 
-    else this.EtoileSelection = true;
-    console.log(this.EtoileSelection);
-    facteur.Reponse = valeur;
-    facteur.Selection = true;
-  }
+
 
 
   private Suivant(){
     this.nouvelleMigraine.Facteurs = [];
     this.compte.MesFacteurs.forEach(facteur => 
       {
-
-        // if (facteur.Selection == true)
-        // {
           let nouveauFacteur : Facteur;
           nouveauFacteur = {"ID":facteur.ID, "Reponse":facteur.Reponse} as Facteur;
           console.log('Facteurcréé' , nouveauFacteur);
           this.nouvelleMigraine.Facteurs.push(nouveauFacteur);
           console.log('Facteurajouté' , this.nouvelleMigraine.Facteurs);
-        // }
       });
-    // let MigrainEnvois : Migraine = new Migraine();
-    // MigrainEnvois.ID = this.nouvelleMigraine.ID;
-    // MigrainEnvois.Complet = true;
-    // MigrainEnvois.Debut = this.nouvelleMigraine.Debut;
-    // MigrainEnvois.Fin = this.nouvelleMigraine.Fin;
-
-    // MigrainEnvois.DateDebut as Date;
-    // MigrainEnvois.DateFin as Date;
-    // MigrainEnvois.HeureDebut as Heure;
-    // MigrainEnvois.HeureFin as Heure;
-
-    // MigrainEnvois.DateDebut = this.nouvelleMigraine.DateDebut;
-    // MigrainEnvois.DateFin = this.nouvelleMigraine.DateFin;
-    // MigrainEnvois.HeureDebut = this.nouvelleMigraine.HeureDebut;
-    // MigrainEnvois.HeureFin = this.nouvelleMigraine.HeureFin;
-
-    // MigrainEnvois.Intensite = this.nouvelleMigraine.Intensite;
-    // MigrainEnvois.MedicamentsPris = this.nouvelleMigraine.MedicamentsPris;
-    // MigrainEnvois.Facteurs = this.nouvelleMigraine.Facteurs;
-      
-    // this.compte.MesMigraines = [];
-    // this.compte.MesMigraines.push(MigrainEnvois);
+   
     this.compte.MesMigraines[0].Facteurs = this.nouvelleMigraine.Facteurs;
     console.log('migraine facteur',this.compte.MesMigraines[0]);
     console.log('La migraine : ', this.nouvelleMigraine);
@@ -193,6 +161,72 @@ export class QuestionnaireFacteurPage {
          }
         },
         error => console.log(error));
+  }
+
+  changementCouleur(wrap_id : HTMLElement, nbr : number)
+  {   
+    for( let i = 0; i < nbr; i++ )
+    {
+      wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star';
+    }
+    for ( let i = nbr; i < 5; i++ ){
+      wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star-outline';
+    }
+  }
+  changementCouleurSelect(wrap_id : HTMLElement, nbr : number)
+  {   
+    console.log('le nom : ', wrap_id.children[0].getElementsByTagName('ion-icon')[0].className);
+    for( let i = 0; i < nbr; i++ )
+    {
+      wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star';
+    }
+  }
+
+  etoileEnter(nbr : number, $event : MouseEvent)
+  {
+    //console.log(event);
+    let wrap_id : HTMLElement = document.getElementById(event.path[1].id);
+    this.changementCouleur(wrap_id, nbr);
+
+    //let etoileNbr = event.path[0].className;
+
+    //wrap_id.className = 'blockEtoiles ' + etoileNbr;
+
+    //etoileNbr = etoileNbr.split('etoile')[1];
+
+    /*for( let i = 1; i <= etoileNbr; i++ )
+    {
+      let etoile = document.getElementsByClassName(event.path[2].id + ' etoile' + i );
+      etoile.setAttribute('class', 'active');
+      console.log(etoile);
+    }*/
+    
+  }
+  etoileLeave(nbr : number, $event : MouseEvent)
+  {
+    let wrap_id : HTMLElement = document.getElementById(event.path[0].id);
+    this.changementCouleur(wrap_id, nbr);
+  }
+
+  ValidIntensiteFacteur(facteur : Facteur, valeur : number, $event : MouseEvent){
+    //console.log(event);
+    let wrap_id : HTMLElement = document.getElementById(event.path[2].id);
+    console.log('l\'étoile c\'est', wrap_id);
+    console.log(this.EtoileSelection);
+
+
+    if (this.EtoileSelection){
+      /*this.IntensiteFacteur(valeur);*/
+      this.changementCouleurSelect(wrap_id, valeur);
+      this.EtoileSelection = false;
+    } 
+    else this.EtoileSelection = true;
+
+
+    
+    console.log(this.EtoileSelection);
+    facteur.Reponse = valeur;
+    facteur.Selection = true;
   }
 
   // private Fin()
