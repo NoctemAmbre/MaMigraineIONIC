@@ -123,6 +123,8 @@ export class CompteServiceProvider {
     }
   }
 
+  
+
 
           // private handleError (error: Response | any) {
   //   let errMsg: string;

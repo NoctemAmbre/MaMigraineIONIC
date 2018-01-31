@@ -1,9 +1,3 @@
-<!--
-  Generated template for the QuestionnaireDebutMigrainePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -28,8 +22,8 @@
       </ion-item>
       <ion-item class=glissieredateDebut>
         <ion-range class="glissiereJours" min={{JourMin}} max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie" (ionChange)="jourModifie()" color="danger">
-          <ion-icon range-left small name="calendar"></ion-icon>
-          <ion-icon range-right name="calendar"></ion-icon>
+          <ion-icon range-left big name="calendar" (click)="JourMoinUn()"></ion-icon>
+          <ion-icon range-right small name="calendar" (click)="JourPlusUn()"></ion-icon>
         </ion-range>
       </ion-item>
       <ion-label></ion-label>
@@ -39,8 +33,8 @@
       </ion-item>
       <ion-item class=glissiereHeureDebut>
         <ion-range class="glissiereHeure" min={{HeureMin}} max={{HeureMax}} step="1" snaps="true" pin="true" [(ngModel)]="HeureModifie" (ionChange)="heureModifie()" color="danger">
-          <ion-icon range-left small name="time"></ion-icon>
-          <ion-icon range-right name="time"></ion-icon>
+          <ion-icon range-left big name="time" (click)="HeureMoinUn()"></ion-icon>
+          <ion-icon range-right small name="time" (click)="HeurePlusUn()"></ion-icon>
         </ion-range>
       </ion-item>
       <ion-label></ion-label>

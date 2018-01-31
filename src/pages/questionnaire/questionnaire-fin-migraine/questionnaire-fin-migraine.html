@@ -28,8 +28,8 @@
         <ion-item class=glissieredateFin>
           <ion-range class="glissiereJours" min={{JourMin}} max={{JourMax}} step="1" snaps="true" pin="true" [(ngModel)]="JourModifie"
             (ionChange)="jourModifie()" color="danger">
-            <ion-icon range-left small name="calendar"></ion-icon>
-            <ion-icon range-right name="calendar"></ion-icon>
+            <ion-icon range-left small select name="calendar" (click)="JourMoinUn()"></ion-icon>
+            <ion-icon range-right select name="calendar" (click)="JourPlusUn()"></ion-icon>
           </ion-range>
         </ion-item>
       </div>
@@ -42,8 +42,8 @@
         <ion-item class=glissiereHeureFin>
           <ion-range class="glissiereHeure" min={{HeureMin}} max={{HeureMax}} step="1" snaps="true" pin="true" [(ngModel)]="HeureModifie"
             (ionChange)="heureModifie()" color="danger">
-            <ion-icon range-left small name="time"></ion-icon>
-            <ion-icon range-right name="time"></ion-icon>
+            <ion-icon range-left small select name="time" (click)="HeureMoinUn()"></ion-icon>
+            <ion-icon range-right select name="time"(click)="HeurePlusUn()"></ion-icon>
           </ion-range>
         </ion-item>
       </div>

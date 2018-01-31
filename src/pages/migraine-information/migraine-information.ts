@@ -77,6 +77,10 @@ export class MigraineInformationPage {
     });
     alert.addInput({
       type: 'text',
+      value: "Réponse : " + facteur.Reponse
+    });
+    alert.addInput({
+      type: 'text',
       value: "Type De Facteur : " + facteur.TypeDeFacteur.Type
     });
     alert.addInput({

@@ -9,13 +9,6 @@ import { Facteur } from '../../model/facteur';
 import { MigraineInformationPage } from '../../pages/migraine-information/migraine-information';
 import { MigraineHistoriqueDirective } from '../../directives/migraine-historique/migraine-historique';
 
-/**
- * Generated class for the MigraineHistoriquePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-migraine-historique',

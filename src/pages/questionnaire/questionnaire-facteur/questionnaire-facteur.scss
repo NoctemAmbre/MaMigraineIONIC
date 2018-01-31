@@ -1,3 +1,49 @@
-page-questionnaire-facteur {
+ion-icon.stars1, ion-icon.stars2, ion-icon.stars3, ion-icon.stars4, ion-icon.stars5{
+    font-size: 5.0rem;
+    color: color($colors, stars);
+}
 
+ion-icon.stars1Select, ion-icon.stars2Select, ion-icon.stars3Select, ion-icon.stars4Select, ion-icon.stars5Select{
+    font-size: 5.0rem;
+    color: color($colors, starsSelect);
+}
+
+ion-icon.ministars1, ion-icon.ministars2, ion-icon.ministars3, ion-icon.ministars4, ion-icon.ministars5{
+    font-size: 2.8rem;
+    color: color($colors, stars);
+    background-color: color($colors, secondary);
+}
+
+// ion-icon.ministars1Select, ion-icon.ministars2Select, ion-icon.ministars3Select, ion-icon.ministars4Select, ion-icon.ministars5Select{
+//     font-size: 2.8rem;
+//     color: color($colors, starsSelect);
+//     background-color: color($colors, secondary);
+// }
+
+.blockEtoiles{
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    text-align: center;
+}
+button.boutonetoile{
+    padding : 0px;
+}
+div.affichagenon, div.affichageoui{
+    width: 45px;
+    height: 30px;
+    // font-size: 1.1rem;
+    text-align: center;
+    background-color: color($colors, secondary);
+    padding-top : 8px;
+    // color : color($colors, light);
+}
+div.permutteur{
+    width: 120px;
+    height: 30px;
+    display: flex;
+    flex-wrap: noswrap;
+    justify-content : space-between;
+    align-items: center;
+    color : color($colors, light);
 }

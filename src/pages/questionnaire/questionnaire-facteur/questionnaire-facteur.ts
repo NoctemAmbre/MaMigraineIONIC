@@ -168,25 +168,37 @@ export class QuestionnaireFacteurPage {
     for( let i = 0; i < nbr; i++ )
     {
       wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star';
+      console.log(wrap_id.children[i].getElementsByTagName('ion-icon')[0].className);
     }
     for ( let i = nbr; i < 5; i++ ){
       wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star-outline';
+      console.log(wrap_id.children[i].getElementsByTagName('ion-icon')[0].className);
     }
   }
+
   changementCouleurSelect(wrap_id : HTMLElement, nbr : number)
   {   
-    console.log('le nom : ', wrap_id.children[0].getElementsByTagName('ion-icon')[0].className);
-    for( let i = 0; i < nbr; i++ )
-    {
-      wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star';
-    }
+      for( let i = 0; i < nbr; i++ )
+      {
+        wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star';
+        //console.log(wrap_id.children[i].getElementsByTagName('ion-icon')[0].className);        
+      }
+      for ( let i = nbr; i < 5; i++ ){
+        wrap_id.children[i].getElementsByTagName('ion-icon')[0].className = 'ministars' + (i + 1) + ' icon icon-md ion-md-star-outline';
+        //console.log(wrap_id.children[i].getElementsByTagName('ion-icon')[0].className);
+      }
   }
 
   etoileEnter(nbr : number, $event : MouseEvent)
   {
-    //console.log(event);
-    let wrap_id : HTMLElement = document.getElementById(event.path[1].id);
-    this.changementCouleur(wrap_id, nbr);
+    if (this.EtoileSelection == false){
+      console.log(event);
+      let wrap_id : HTMLElement = document.getElementById(event['path'][1].id);
+      this.changementCouleur(wrap_id, nbr);
+    }
+    
+    //let wrap_id : HTMLElement = document.getElementById(event.path[1].id);
+    //this.changementCouleur(wrap_id, nbr);
 
     //let etoileNbr = event.path[0].className;
 
@@ -204,29 +216,28 @@ export class QuestionnaireFacteurPage {
   }
   etoileLeave(nbr : number, $event : MouseEvent)
   {
-    let wrap_id : HTMLElement = document.getElementById(event.path[0].id);
-    this.changementCouleur(wrap_id, nbr);
+    if (this.EtoileSelection == false){
+      let wrap_id : HTMLElement = document.getElementById(event['path'][0].id);
+      this.changementCouleur(wrap_id, nbr);
+    }
   }
 
-  ValidIntensiteFacteur(facteur : Facteur, valeur : number, $event : MouseEvent){
-    //console.log(event);
-    let wrap_id : HTMLElement = document.getElementById(event.path[2].id);
-    console.log('l\'étoile c\'est', wrap_id);
-    console.log(this.EtoileSelection);
-
-
-    if (this.EtoileSelection){
-      /*this.IntensiteFacteur(valeur);*/
-      this.changementCouleurSelect(wrap_id, valeur);
-      this.EtoileSelection = false;
-    } 
-    else this.EtoileSelection = true;
-
-
+  SelectIntensite(facteur : Facteur, valeur : number, $event : MouseEvent){
     
-    console.log(this.EtoileSelection);
-    facteur.Reponse = valeur;
-    facteur.Selection = true;
+    if (this.EtoileSelection) this.DeSelect();
+    else {
+      
+      let wrap_id : HTMLElement = document.getElementById( event['path'][2].id);
+      //wrap_id.style.backgroundColor = "color($colors, secondary)";
+      console.log('le bloc étoile selectionné', wrap_id);
+      this.EtoileSelection = true;
+      facteur.Reponse = valeur;
+      facteur.Selection = true;
+    }
+
+  }
+  DeSelect(){
+    this.EtoileSelection = false;
   }
 
   // private Fin()

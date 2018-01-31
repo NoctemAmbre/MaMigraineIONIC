@@ -187,6 +187,19 @@ export class QuestionnaireFinMigrainePage {
     return retour;
   }
 
+  JourPlusUn(){
+    if (this.JourModifie < this.JourMax) this.JourModifie++;
+  }
+  JourMoinUn(){
+    if (this.JourModifie > this.JourMin) this.JourModifie--;
+  }
+  HeurePlusUn(){
+    if (this.HeureModifie < this.HeureMax) this.HeureModifie++;
+  }
+  HeureMoinUn(){
+    if (this.HeureModifie > this.HeureMin) this.HeureModifie--;
+  }
+
   private Suivant() {
     this.compte.MesMigraines[0].Fin = this.DateFin + 'T' + this.JourFin;
     console.log('migraine fin',this.compte.MesMigraines[0]);

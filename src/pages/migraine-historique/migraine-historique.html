@@ -10,8 +10,9 @@
   <div *ngIf="compte" >
     <div class="contenaire" *ngFor="let Migraine of compte.MesMigraines">
         <button class="historiqueComplet" *ngIf="Migraine.Complet" (click)="VoirMigraine(Migraine)" style="border-color: white">
-            <div class="DateDebut">Du {{Migraine.DateDebut.day}}/{{Migraine.DateDebut.month}}/{{Migraine.DateDebut.year}} à {{Migraine.HeureDebut.hour}} heure {{Migraine.HeureDebut.minute}}</div>
-            <div class="DateFin">Au {{Migraine.DateFin.day}}/{{Migraine.DateFin.month}}/{{Migraine.DateFin.year}} à {{Migraine.HeureFin.hour}} heure {{Migraine.HeureFin.minute}}</div>
+            <!-- <div class="DateDebut">Du {{Migraine.DateDebut.day}}/{{Migraine.DateDebut.month}}/{{Migraine.DateDebut.year}} à {{Migraine.HeureDebut.hour}} heure {{Migraine.HeureDebut.minute}}</div> -->
+            <div class="DateDebut">Du {{Migraine.DebutPresentation}}</div>
+            <div class="DateFin">Au {{Migraine.FinPresentation}} </div>
             <div class="Duree">Durée : {{Migraine.Duree}} heure</div>
             <div class="Intensite">Intensité :
               <ion-icon *ngIf="Migraine.Intensite > 0" name="ios-star" item-start></ion-icon>

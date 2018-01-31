@@ -7,6 +7,7 @@ import { MenuPage } from '../../../pages/menu/menu';
 import { CompteServiceProvider} from '../../../providers/compte/compte-service';
 import { Compte } from '../../../model/compte';
 import { Migraine } from '../../../model/migraine';
+import { Medicament } from '../../../model/medicament';
 
 /**
  * Generated class for the QuestionnaireDebutMigrainePage page.
@@ -187,6 +188,18 @@ export class QuestionnaireDebutMigrainePage {
     this.DateDebut = annee + "-" + moi + "-" + jour;
   }
 
+  JourPlusUn(){
+    if (this.JourModifie < this.JourMax) this.JourModifie++;
+  }
+  JourMoinUn(){
+    if (this.JourModifie > this.JourMin) this.JourModifie--;
+  }
+  HeurePlusUn(){
+    if (this.HeureModifie < this.HeureMax) this.HeureModifie++;
+  }
+  HeureMoinUn(){
+    if (this.HeureModifie > this.HeureMin) this.HeureModifie--;
+  }
   //passage a la page suivant. pour l'occasion on efface la liste des migraines pour en faire une nouvelle contenant la novuelle migraine.
   //on en profite pour transformer la date pour qu'elle soit conforme a la structure d'envois 
   private Suivant(){
@@ -205,8 +218,30 @@ export class QuestionnaireDebutMigrainePage {
   private Annule()
   {
     console.log('Etat de MesMigraine a l\'annulation : ', this.compte.MesMigraines);
+    if(this.compte.MesMigraines.length == 1) this.LoginToken();
+    
     //let AffichageHome = this.modalController.create(MenuPage);
     //AffichageHome.present();
     this.viewController.dismiss();
+  }
+  LoginToken()
+  {
+    this.compteServiceProvider.LoginToken()
+    .subscribe(
+      (retour) => 
+      {
+        this.compte = retour as Compte;
+
+        if (this.compte.Erreur == null){
+          this.compte.MesMedicaments = (retour as Compte).MesMedicaments as Medicament[];
+          this.compte.MesMigraines = (retour as Compte).MesMigraines as Migraine[];
+          localStorage.setItem('Token', this.compte.Token);
+          localStorage.setItem('Compte', JSON.stringify(this.compte));
+          this.compteServiceProvider.changeCompte(this.compte);
+          this.compteServiceProvider.AffichageMigraineIncomplete();
+          console.log(retour)
+        }
+      },
+      error => console.log(error));
   }
 }

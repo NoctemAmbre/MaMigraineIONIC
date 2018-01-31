@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+//import { Sim } from '@ionic-native/sim';
 import { Storage } from '@ionic/storage';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
@@ -32,11 +33,25 @@ export class CompteLoginPage {
      public navParams: NavParams,
      public viewCtrl: ViewController,
      public storage : Storage,
-     public ModalController : ModalController) {
+     public ModalController : ModalController
+     //public sim: Sim
+    ) {
   }
 
   ionViewDidLoad() {
     this.compteServiceProvider.compte.subscribe(res => this.compte = res);
+    // this.sim.getSimInfo().then(
+    //   (info) => console.log('Sim info: ', info),
+    //   (err) => console.log('Unable to get sim info: ', err)
+    // );
+    // this.sim.hasReadPermission().then(
+    //   (info) => console.log('Has permission: ', info)
+    // );
+    // this.sim.requestReadPermission().then(
+    //   () => console.log('Permission granted'),
+    //   () => console.log('Permission denied')
+    // );
+    
     // this.storage.remove('Token');
     // this.storage.clear();
     //localStorage.setItem('Token',"");
@@ -112,14 +127,20 @@ export class CompteLoginPage {
       (retour) => 
       {
         this.compte = retour as Compte;
-        this.compte.MesMedicaments = (retour as Compte).MesMedicaments as Medicament[];
-        this.compte.MesMigraines = (retour as Compte).MesMigraines as Migraine[];
-        localStorage.setItem('Token', this.compte.Token);
-        localStorage.setItem('Compte', JSON.stringify(this.compte));
-        this.compteServiceProvider.changeCompte(this.compte);
-        this.compteServiceProvider.AffichageMigraineIncomplete();
-        this.AffichageLogin = false;
-        console.log(retour)
+
+        if (this.compte.Erreur == null){
+          this.compte.MesMedicaments = (retour as Compte).MesMedicaments as Medicament[];
+          this.compte.MesMigraines = (retour as Compte).MesMigraines as Migraine[];
+          localStorage.setItem('Token', this.compte.Token);
+          localStorage.setItem('Compte', JSON.stringify(this.compte));
+          this.compteServiceProvider.changeCompte(this.compte);
+          this.compteServiceProvider.AffichageMigraineIncomplete();
+          this.AffichageLogin = false;
+          console.log(retour)
+        }
+        else { //dans le cas ou nous avont un message d'erreur au retour de la connexion on réinitialise tout et on demande un login et un mot de passe
+          this.Deconnexion();
+        }
       },
       error => console.log(error));
   }

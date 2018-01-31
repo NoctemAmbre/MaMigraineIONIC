@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+//import { Sim } from '@ionic-native/sim';
 
 import { MyApp } from './app.component';
 import { MenuPage } from '../pages/menu/menu';
