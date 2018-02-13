@@ -11,7 +11,7 @@ import { FacteurInformationPage } from '../facteur-information/facteur-informati
 import { Compte } from '../../model/compte';
 import { Medicament } from '../../model/medicament';
 import { Migraine } from '../../model/migraine';
-import { Medecin } from '../../model/medecin';
+//import { Medecin } from '../../model/medecin';
 import { Facteur } from '../../model/facteur';
 
 @IonicPage()

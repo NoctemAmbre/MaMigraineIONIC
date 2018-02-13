@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+//import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+//import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Medecin } from '../../model/medecin';
 

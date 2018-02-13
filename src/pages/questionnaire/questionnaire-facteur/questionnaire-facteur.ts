@@ -6,10 +6,11 @@ import { CompteServiceProvider} from '../../../providers/compte/compte-service';
 import {  MenuPage } from '../../../pages/menu/menu';
 
 import { Compte } from '../../../model/compte';
-import { Medicament } from '../../../model/medicament';
+//import { Medicament } from '../../../model/medicament';
 import { Migraine } from '../../../model/migraine';
-import { Date, Heure } from './../../../model/date_heure';
-import { Facteur, TypeFacteur, TypeReponse } from '../../../model/facteur';
+//import { Date, Heure } from './../../../model/date_heure';
+//import { Facteur, TypeFacteur, TypeReponse } from '../../../model/facteur';
+import { Facteur } from '../../../model/facteur';
 /**
  * Generated class for the QuestionnaireFacteurPage page.
  *
@@ -92,7 +93,7 @@ export class QuestionnaireFacteurPage {
 
 
   private Suivant(){
-    this.nouvelleMigraine.Facteurs = [];
+    //this.nouvelleMigraine.Facteurs = [];
     this.compte.MesFacteurs.forEach(facteur => 
       {
           let nouveauFacteur : Facteur;

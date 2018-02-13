@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
-import { Subscriber } from 'rxjs/Subscriber';
-import { Subscription } from 'rxjs/Subscription';
-import { HttpClient } from '@angular/common/http';
+//import { Observable } from 'rxjs/Observable';
+//import { Subscriber } from 'rxjs/Subscriber';
+//import { Subscription } from 'rxjs/Subscription';
+//import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 //import { Platform } from 'ionic-angular';
 import { CompteLoginPage } from '../compte-login/compte-login';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 import { QuestionnaireFinMigrainePage } from '../../../pages/questionnaire/questionnaire-fin-migraine/questionnaire-fin-migraine';
-import { MenuPage } from '../../../pages/menu/menu';
+//import { MenuPage } from '../../../pages/menu/menu';
 
 import { CompteServiceProvider} from '../../../providers/compte/compte-service';
 import { Compte } from '../../../model/compte';

@@ -7,8 +7,8 @@ import { CompteLoginPage } from '../compte-login/compte-login';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
 
-import { Compte } from '../../model/compte';
-import { Migraine } from '../../model/migraine';
+//import { Compte } from '../../model/compte';
+//import { Migraine } from '../../model/migraine';
 
 
 /**

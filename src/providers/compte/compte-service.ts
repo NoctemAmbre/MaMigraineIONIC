@@ -1,22 +1,19 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
+//import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Compte } from '../../model/compte';
-//import { IonicStorageModule } from '@ionic/storage';
-/*
-  Generated class for the CompteServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CompteServiceProvider {
-  private apiUrl = 'https://restcountries.eu/rest/v2/all';
-  private WebService = 'http://localhost:57928/Service1.svc';
-
+  //private apiUrl = 'https://restcountries.eu/rest/v2/all';
+  // private WebService = 'http://localhost:57928/Service1.svc';
+  //private WebService = 'http://86.195.103.177:3000/Service1.svc';
+  private WebService = 'http://192.168.1.11:3000/Service1.svc';
+  
   public static CleBasic : string = "j6tYtmgst2XIOIeRsPHR";
   
   private comptes = new BehaviorSubject<Compte>(new Compte());

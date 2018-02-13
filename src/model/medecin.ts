@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Adresse } from './adresse';
 import { Horaire } from './horaire';
-import { Migraine } from './migraine';
+//import { Migraine } from './migraine';
 
 @Injectable()
 export class Medecin {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+//import { Storage } from '@ionic/storage';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
 import { QuestionnaireDebutMigrainePage } from '../questionnaire/questionnaire-debut-migraine/questionnaire-debut-migraine';
@@ -9,7 +9,7 @@ import { Migraine } from '../../model/migraine';
 import { Compte } from '../../model/compte';
 import { Medicament } from '../../model/medicament';
 import { Facteur } from '../../model/facteur';
-import { Date, Heure } from './../../model/date_heure';
+//import { Date, Heure } from './../../model/date_heure';
 
 
 @IonicPage()

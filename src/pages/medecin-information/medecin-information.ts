@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+//import { Storage } from '@ionic/storage';
 
 import { MedecinServiceProvider} from '../../providers/medecin/medecin-service';
 import { Medecin } from '../../model/medecin';

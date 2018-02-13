@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+//import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';

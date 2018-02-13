@@ -1,13 +1,14 @@
-import { Component, Directive } from '@angular/core';
+//import { Component, Directive } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { CompteServiceProvider} from '../../providers/compte/compte-service';
 import { Compte } from '../../model/compte';
 import { Migraine } from '../../model/migraine';
 import { Medicament } from '../../model/medicament';
-import { Facteur } from '../../model/facteur';
+//import { Facteur } from '../../model/facteur';
 import { MigraineInformationPage } from '../../pages/migraine-information/migraine-information';
-import { MigraineHistoriqueDirective } from '../../directives/migraine-historique/migraine-historique';
+//import { MigraineHistoriqueDirective } from '../../directives/migraine-historique/migraine-historique';
 
 @IonicPage()
 @Component({
