@@ -11,13 +11,22 @@
         <ion-row>
           <ion-list>
             <ion-label>
-              <strong>Dénomination : </strong> {{medicament.DenominationMedicament}}
+              <strong>Dénomination : </strong> 
+              <button ion-grid class="Info"> 
+                  {{medicament.DenominationMedicament}}
+              </button>
             </ion-label>
             <ion-label>
-              <strong>Forme : </strong> {{medicament.FormePharmaceutique}}
+              <strong>Forme : </strong>
+              <button ion-grid class="Info"> 
+                 {{medicament.FormePharmaceutique}}
+              </button>
             </ion-label>
             <ion-label>
-              <strong>Voies d'administration : </strong> {{medicament.VoiesAdministration}}
+              <strong>Voies d'administration : </strong>
+              <button ion-grid class="Info"> 
+                {{medicament.VoiesAdministration}}
+              </button>
             </ion-label>
           </ion-list>
         </ion-row>

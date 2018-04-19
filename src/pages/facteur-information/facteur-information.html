@@ -11,19 +11,34 @@
           <ion-row>
             <ion-list>
               <ion-label>
-                <strong>Nom : </strong> {{facteur.Nom}}
+                <strong>Nom : </strong>
+                <button ion-grid class="Info"> 
+                    {{facteur.Nom}}
+                </button> 
               </ion-label>
               <ion-label>
-                <strong>Question : </strong> {{facteur.Question}}
+                <strong>Question : </strong>
+                <button ion-grid class="Info"> 
+                  {{facteur.Question}}
+                </button>
               </ion-label>
               <ion-label>
-                <strong>Type De Facteur : </strong> {{facteur.TypeDeFacteur.Type}}
+                <strong>Type De Facteur : </strong>
+                <button ion-grid class="Info"> 
+                  {{facteur.TypeDeFacteur.Type}}
+                </button>
               </ion-label>
               <ion-label>
-                <strong>Type De Reponse : </strong> {{facteur.TypeDeReponse.Type}}
+                <strong>Type De Reponse : </strong>
+                <button ion-grid class="Info">
+                  {{facteur.TypeDeReponse.Type}}
+                </button>
               </ion-label>
               <ion-label>
-                  <strong>Information : </strong> {{facteur.TypeDeReponse.Information}}
+                  <strong>Information : </strong>
+                  <button ion-grid class="Info"> 
+                    {{facteur.TypeDeReponse.Information}}
+                  </button>
                 </ion-label>
             </ion-list>
           </ion-row>

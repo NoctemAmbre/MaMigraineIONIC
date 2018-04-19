@@ -22,6 +22,7 @@ import { Migraine } from '../../../model/migraine';
   templateUrl: 'questionnaire-intensite-migraine.html',
 })
 export class QuestionnaireIntensiteMigrainePage {
+
   compte: Compte;
   nouvelleMigraine: Migraine;
   InfoMigraine: string = "C'est une migraine";
@@ -57,23 +58,23 @@ export class QuestionnaireIntensiteMigrainePage {
     //console.log(valeur);
     if (valeur == 1) {
     this.Etoile1 = "star"; this.Etoile2 = "star-outline"; this.Etoile3 = "star-outline"; this.Etoile4 = "star-outline"; this.Etoile5 = "star-outline";
-      this.InfoMigraine = "c'est une migraine 1 étoile : At nunc si ad aliquem bene nummatum tumentemque ideo honestus advena salutatum introieris, primitus tamquam exoptatus suscipieris et interrogatus multa coactusque mentiri, miraberis numquam antea visus summatem virum tenuem te sic enixius observantem, ut paeniteat ob haec bona tamquam praecipua non vidisse ante decennium Romam. Sed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei";
+      this.InfoMigraine = "c'est une migraine 1 étoile : C'est une migraine pour rire ça. J'y pense a peine. Elle ne me provoque presque aucun désagréments";
     }
     if (valeur == 2) {
     this.Etoile1 = "star"; this.Etoile2 = "star"; this.Etoile3 = "star-outline"; this.Etoile4 = "star-outline"; this.Etoile5 = "star-outline";
-      this.InfoMigraine = "c'est une migraine 2 étoiles";
+      this.InfoMigraine = "c'est une migraine 2 étoiles : C'est une migraine assez forte pour me gacher la vie. Elle ne partira pas d'elle même c'est sûre. Si elle n'empire pas je devrais m'en sortir sans trop de mal";
     }
     if (valeur == 3) {
     this.Etoile1 = "star"; this.Etoile2 = "star"; this.Etoile3 = "star"; this.Etoile4 = "star-outline"; this.Etoile5 = "star-outline";
-      this.InfoMigraine = "c'est une migraine 3 étoiles";
+      this.InfoMigraine = "c'est une migraine 3 étoiles : C'est du sérieux, C'est une migraine qui ne rigole pas : elle est en train de me détraquer l'organisme il me faut un traitement de choc pour en venir a bout";
     }
     if (valeur == 4) {
     this.Etoile1 = "star"; this.Etoile2 = "star"; this.Etoile3 = "star"; this.Etoile4 = "star"; this.Etoile5 = "star-outline";
-      this.InfoMigraine = "c'est une migraine 4 étoiles";
+      this.InfoMigraine = "c'est une migraine 4 étoiles : j'arrive a peine a réfléchir. J'ai mal et je ne pense qu'a ça. Elle est si forte cette migraine que tout mon organisme se révulse a l'idée de faire la moindre chose";
     }
     if (valeur == 5) {
     this.Etoile1 = "star"; this.Etoile2 = "star"; this.Etoile3 = "star"; this.Etoile4 = "star"; this.Etoile5 = "star";
-      this.InfoMigraine = "c'est une migraine 5 étoiles";
+      this.InfoMigraine = "c'est une migraine 5 étoiles : Je suis trop mal .... laissez moi mourir";
     }
   }
 

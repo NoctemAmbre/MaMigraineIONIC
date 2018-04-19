@@ -14,24 +14,32 @@
 
           <ion-list>
             <ion-label>
-              <strong>Nom : </strong> {{medecin.Nom}}
+              <strong>Nom : </strong>
+              <button ion-grid class="Info"> 
+                {{medecin.Nom}}
+              </button>
             </ion-label>
             <ion-label>
-              <strong>Prenom : </strong> {{medecin.Prenom}}
+              <strong>Prenom : </strong>
+              <button ion-grid class="Info"> 
+                 {{medecin.Prenom}}
+              </button>
             </ion-label>
             <ion-label>
               <strong>Adresse : </strong>
-              <div>
-                {{medecin.Adresse.Numero}} {{medecin.Adresse.NomRue}}
-              </div>
-              <div>
-                {{medecin.Adresse.CodePostal}} {{medecin.Adresse.Ville}}
-              </div>
+              <button ion-grid class="Info">
+                {{medecin.Adresse[0].Numero}} {{medecin.Adresse[0].NomRue}}
+              </button>
+              <button ion-grid class="Info">
+                {{medecin.Adresse[0].CodePostal}} {{medecin.Adresse[0].Ville}}
+              </button>
             </ion-label>
             <ion-label>
               <strong>Horaire d'ouverture : </strong>
               <div *ngFor="let horaire of medecin.HoraireOuverture">
-                <div>{{horaire.Jour}} : de {{horaire.Matin}} à {{horaire.Soir}}</div>
+                <button ion-grid class="Info">
+                  {{horaire.Jour}} : de {{horaire.Matin}} à {{horaire.Soir}}
+                </button>
               </div>
             </ion-label>
           </ion-list>

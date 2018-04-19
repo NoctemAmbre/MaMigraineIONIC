@@ -60,24 +60,35 @@ div.question{
     border-color: color($colors, light);
 }
 
-button.Medicament, button.Facteur, button.Medecin{
-    background-color: color($colors, secondary);
+button.Info{
+    background-color: color($colors, primary);
     padding : 2px;
     margin : 2px 0px 2px 10px;
     width: 95%;
-    height: 12px;
+    height: 15px;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
+    color: color($colors, light);
+}
+
+button.Medicament, button.Facteur, button.Medecin{
+    background-color: color($colors, primary);
+    padding : 2px;
+    margin : 2px 0px 2px 10px;
+    width: 95%;
+    height: 15px;
+    text-align: left;
+    font-size: 1.3rem;
     color: color($colors, light);
 }
 button.Medecin :hover{
-    background-color: color($colors, primary);
+    background-color: color($colors, secondary);
 }
 button.Medicament :hover{
-    background-color: color($colors, primary);
+    background-color: color($colors, secondary);
 }
 button.Facteur :hover{
-    background-color: color($colors, primary);
+    background-color: color($colors, secondary);
 }
 
 div.troisboutons{

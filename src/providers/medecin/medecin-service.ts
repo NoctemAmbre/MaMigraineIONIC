@@ -16,7 +16,11 @@ import { Medecin } from '../../model/medecin';
 @Injectable()
 export class MedecinServiceProvider {
 
-  private WebService = 'http://localhost:57928/Service1.svc';
+  //private WebService = 'http://localhost:57928/Service1.svc';
+  //private WebService = 'http://192.168.1.11:3000/Service1.svc';
+  //private WebService = 'http://91.160.28.49:50000/Service1.svc';
+  private WebService = 'http://mamigraine.freeboxos.fr:50000/Service1.svc';
+  //private WebService = 'http://mamigraine.freeboxos.fr:50000/Service1.svc';
 
   constructor(public http: HttpClient) {
     //console.log('Hello MedecinServiceProvider Provider');

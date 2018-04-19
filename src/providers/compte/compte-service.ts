@@ -9,11 +9,16 @@ import { Compte } from '../../model/compte';
 
 @Injectable()
 export class CompteServiceProvider {
-  //private apiUrl = 'https://restcountries.eu/rest/v2/all';
-  // private WebService = 'http://localhost:57928/Service1.svc';
-  //private WebService = 'http://86.195.103.177:3000/Service1.svc';
-  private WebService = 'http://192.168.1.11:3000/Service1.svc';
   
+  private WebService = 'http://mamigraine.freeboxos.fr:50000/Service1.svc';
+
+
+  //private apiUrl = 'https://restcountries.eu/rest/v2/all';
+  //private WebService = 'http://localhost:57928/Service1.svc';
+  //private WebService = 'http://91.160.28.49:50000/Service1.svc';
+  //private WebService = 'http://mamigraine.freeboxos.fr:50000/Service1.svc';
+  //private WebService = 'http://192.168.1.11:3000/Service1.svc';
+  //private WebService = 'http://192.168.1.11:57928/Service1.svc';
   public static CleBasic : string = "j6tYtmgst2XIOIeRsPHR";
   
   private comptes = new BehaviorSubject<Compte>(new Compte());
@@ -103,7 +108,8 @@ export class CompteServiceProvider {
   // }
   
    private extractData(res: HttpResponse<Compte>) {
-    console.log('le body a la reception', res.body);
+    //console.log('le body a la reception', res.body);
+    console.log('le body a la reception', JSON.stringify(res.body));
     let body = res.body;
     return body || { };
   }

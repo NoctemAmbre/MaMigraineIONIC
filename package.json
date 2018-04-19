@@ -1,8 +1,8 @@
 {
-  "name": "MigraineIONIC3Tel",
+  "name": "Migraine",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Bruno Hermier",
+  "homepage": "http://mamigraine.fr/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -28,11 +28,11 @@
     "@ionic-native/status-bar": "^4.4.0",
     "@ionic/storage": "^2.1.3",
     "cordova-android": "7.0.0",
-    "cordova-plugin-device": "^1.1.4",
-    "cordova-plugin-ionic-webview": "^1.1.11",
-    "cordova-plugin-splashscreen": "^4.0.3",
-    "cordova-plugin-whitelist": "1.3.1",
-    "cordova-sqlite-storage": "^2.1.5",
+    "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-ionic-webview": "^1.1.16",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-sqlite-storage": "^2.2.1",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
@@ -52,7 +52,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"

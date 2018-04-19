@@ -93,7 +93,7 @@ export class QuestionnaireFacteurPage {
 
 
   private Suivant(){
-    //this.nouvelleMigraine.Facteurs = [];
+    this.nouvelleMigraine.Facteurs = [];
     this.compte.MesFacteurs.forEach(facteur => 
       {
           let nouveauFacteur : Facteur;
